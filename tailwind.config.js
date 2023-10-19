@@ -6,8 +6,15 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      Sans: ['poppins', 'sans-serif'],
+    },
+    extend: {
+      colors: {
+        lightestGray: '#F3F3F3',
+        // You can add more custom colors here if needed
+      },
+    },
   },
   plugins: [],
 };
-
