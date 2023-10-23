@@ -1,5 +1,7 @@
 'use client';
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
+import { IoMdClose } from 'react-icons/io';
+import Button from '../Button';
 
 interface ModalProps {
   isOpen: boolean;
@@ -11,7 +13,7 @@ interface ModalProps {
   actionLabel: string;
   disabled?: boolean;
   secondaryAction?: () => void;
-  secondaryLabel?: string;
+  secondaryActionLabel?: string;
 }
 
 const Modal = ({
@@ -24,45 +26,44 @@ const Modal = ({
   actionLabel,
   disabled,
   secondaryAction,
-  secondaryLabel,
+  secondaryActionLabel,
 }: ModalProps) => {
+  const [showModal, setShowModal] = useState(isOpen);
 
-    const [showModal, setShowModal] = useState(isOpen);
+  useEffect(() => {
+    setShowModal(isOpen);
+  }, [isOpen]);
 
-    useEffect(() => {
-        setShowModal(isOpen);
-    }, [isOpen]);
-
-    const handleClose = useCallback(() => {
-        if (disabled) {
-            return;
-        }
-
-        setShowModal(false);
-        setTimeout(() => {
-            onClose();
-        }, 300);
-    }, [disabled, onClose]);
-
-    const handleSubmit = useCallback(() => {
-        if (disabled) {
-            return;
-        }
-
-        onSubmit();
-    }, [disabled, onSubmit]);
-
-    const handleSecondaryAction = useCallback(() => {
-        if (disabled || !secondaryAction) {
-            return;
-            }
-
-            secondaryAction();
-    }, [disabled, secondaryAction]);
-
-    if (!isOpen) {
-        return null;
+  const handleClose = useCallback(() => {
+    if (disabled) {
+      return;
     }
+
+    setShowModal(false);
+    setTimeout(() => {
+      onClose();
+    }, 300);
+  }, [onClose, disabled]);
+
+  const handleSubmit = useCallback(() => {
+    if (disabled) {
+      return;
+    }
+
+    onSubmit();
+  }, [disabled, onSubmit]);
+
+  const handleSecondaryAction = useCallback(() => {
+    if (disabled || !secondaryAction) {
+      return;
+    }
+
+    secondaryAction();
+  }, [disabled, secondaryAction]);
+
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     <>
@@ -100,11 +101,81 @@ const Modal = ({
             duration.300
             h-full
             ${showModal ? 'translate-y-0' : 'translate-y-full'}
-            ${showModal ? 'translate-y-0' : 'translate-y-full'}
-            `}
-            >
-
+            ${showModal ? 'opacity-100' : 'opacity-0'}
+            `}>
+            <div
+              className="
+                        translate
+                        h-full
+                        lg:h-auto
+                        md:h-auto
+                        border-0
+                        rounded-tr-2xl
+                        rounded-bl-2xl
+                        shadow-lg
+                        relative
+                        flex
+                        flex-col
+                        w-full
+                        bg-white
+                        outline-none
+                        focus:outline-none
+                    ">
+              {/*header*/}
+              <div
+                className="
+                  flex
+                  items-center
+                  p-6
+                  rounder-t
+                  justify-center
+                  relative
+                  border-b-[1px]
+                  ">
+                <button
+                  onClick={handleClose}
+                  className="
+                    p-1
+                    border-0
+                    hover:opacity-70
+                    transition
+                    absolute
+                    right-9
+                    ">
+                  <IoMdClose size={18} />
+                </button>
+                <div className="text-lg font-semibold">{title}</div>
+              </div>
+              {/*body*/}
+              <div className="relative p-6 flex-auto">{body}</div>
+              {/*footer*/}
+              <div className="flex flex-col gap-2 p-6">
+                <div
+                  className="
+                        flex
+                        flex-row
+                        items-center
+                        gap-4
+                        w-full
+                        ">
+                  {secondaryAction && secondaryActionLabel && (
+                    <Button
+                    disabled={disabled}
+                    label={secondaryActionLabel}
+                    onClick={handleSecondaryAction}
+                    outline
+                    />
+                  )}
+                  <Button
+                    disabled={disabled}
+                    label={actionLabel}
+                    onClick={handleSubmit}
+                  />
+                </div>
+                {footer}
+              </div>
             </div>
+          </div>
         </div>
       </div>
     </>
