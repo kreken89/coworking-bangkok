@@ -26,7 +26,7 @@ const RegisterModal = () => {
         },
     } = useForm<FieldValues>({
         defaultValues: {
-            // name: '',
+            name: '',
             email: '',
             password: '',
         }
