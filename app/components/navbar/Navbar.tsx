@@ -7,6 +7,7 @@ import Search from './Search';
 import UserMenu from './UserMenu';
 import { BiSolidHome } from 'react-icons/bi';
 import { SafeUser } from '@/app/types';
+import Categories from './Categories';
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
@@ -38,6 +39,7 @@ const Navbar = ({ currentUser }: NavbarProps) => {
           </div>
         </Container>
       </div>
+      {/* <Categories /> */}
     </div>
   );
 };

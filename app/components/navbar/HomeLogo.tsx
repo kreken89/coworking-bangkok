@@ -1,13 +1,14 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { BiSolidHome } from 'react-icons/bi';
 
 const HomeLogo = () => {
-
+  const router = useRouter();
 
   return (
     <div
-          onClick={() => {}}
+          onClick={() => router.push('/')}
           className="
             bg-lightestGray
             p-4

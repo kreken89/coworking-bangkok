@@ -5,11 +5,15 @@ import { BiSolidUser } from 'react-icons/bi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import Avatar from '../Avatar';
 import { useCallback, useState } from 'react';
+import { signOut } from 'next-auth/react';
+
 import MenuItem from './MenuItem';
+
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import useLoginModal from '@/app/hooks/useLoginModal';
-import { signOut } from 'next-auth/react';
+import useRentModal from '@/app/hooks/useRentModal';
 import { SafeUser } from '@/app/types';
+
 
 interface UserMenuProps {
   currentUser?: SafeUser | null
@@ -20,6 +24,7 @@ const UserMenu = ({ currentUser }: UserMenuProps ) => {
 
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+  const rentModal = useRentModal();
 
     const[isOpen, setIsOpen] = useState(false);
 
@@ -27,11 +32,19 @@ const UserMenu = ({ currentUser }: UserMenuProps ) => {
         setIsOpen((value) => !value);
     }, []);
 
+    const onRent = useCallback(() => {
+      if (!currentUser) {
+        return loginModal.onOpen();
+      }
+
+      rentModal.onOpen();
+    }, [currentUser, loginModal, rentModal ]);
+
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
-        {/* <div
-          onClick={() => {}}
+        <div
+          onClick={onRent}
           className="
             hidden
             md:block
@@ -44,8 +57,8 @@ const UserMenu = ({ currentUser }: UserMenuProps ) => {
             transition
             cursor-pointer
             ">
-          Airbnb your home
-        </div> */}
+          Co Working Bangkok
+        </div>
         <div
           //   onClick={toggleOpen}
           className="
@@ -83,7 +96,9 @@ const UserMenu = ({ currentUser }: UserMenuProps ) => {
             transition
             ">
           {/* <BiSolidUser /> */}
-          <div className="hidden md:block"><Avatar src={currentUser?.image} /></div>
+          <div className="hidden md:block">
+            <Avatar src={currentUser?.image} />
+          </div>
         </div>
         <div
           onClick={() => {}}
@@ -128,7 +143,7 @@ const UserMenu = ({ currentUser }: UserMenuProps ) => {
                 <MenuItem onClick={() => {}} label="My favorites" />
                 <MenuItem onClick={() => {}} label="My reservations" />
                 <MenuItem onClick={() => {}} label="My Properties" />
-                <MenuItem onClick={() => {}} label="Co working bangkok home" />
+                <MenuItem onClick={rentModal.onOpen} label="Co working bangkok home" />
                 <MenuItem onClick={() => signOut()} label="Logout" />
                 {/* <MenuItem onClick={() => {}} label="Account" /> */}
               </>
