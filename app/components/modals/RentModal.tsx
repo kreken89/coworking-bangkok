@@ -14,6 +14,9 @@ import dynamic from "next/dynamic";
 import Counter from "../inputs/Counter";
 import ImageUpload from "../inputs/ImageUpload";
 import Input from "../inputs/Input";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 enum STEPS {
     CATEGORY = 0,
@@ -25,6 +28,7 @@ enum STEPS {
 }
 
 const RentModal = () => {
+    const router = useRouter();
     const rentModal = useRentModal();
 
     const [step, setStep] = useState(STEPS.CATEGORY);
@@ -88,7 +92,19 @@ const RentModal = () => {
 
       setIsLoading(true);
 
-      axios
+      axios.post('/api/listings', data)
+      .then(() => {
+        toast.success('Listing Created!');
+        router.refresh();
+        reset();
+        setStep(STEPS.CATEGORY);
+        rentModal.onClose();
+      })
+      .catch(() => {
+        toast.error('Something went wrong');
+      }).finally(() => {
+        setIsLoading(false);
+      })
     }
 
     const actionLabel = useMemo(() => {
@@ -255,7 +271,7 @@ const RentModal = () => {
     <Modal 
         isOpen={rentModal.isOpen}
         onClose={rentModal.onClose}
-        onSubmit={onNext}
+        onSubmit={handleSubmit(onSubmit)}
         actionLabel={actionLabel}
         secondaryActionLabel={secondaryActionLabel}
         secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
