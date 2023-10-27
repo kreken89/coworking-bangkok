@@ -119,6 +119,9 @@ const Categories = () => {
                 items-center
                 justify-between
                 overflow-x-auto
+                bg-white
+                rounded-tr-3xl
+                rounded-bl-3xl
             ">
         {categories.map((item) => (
           <CategoryBox

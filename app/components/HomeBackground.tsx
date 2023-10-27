@@ -6,7 +6,10 @@ const HomeBackground = () => {
       className=" h-screen bg-center"
       style={{
         backgroundImage: `url(/images/HeroHomePage.png)`,
-        backgroundSize: '2100px',
+        // backgroundSize: '1700px',
+        width: '100%',
+        height: '70vh',
+        backgroundRepeat: 'no-repeat',
       }}></div>
   );
 };

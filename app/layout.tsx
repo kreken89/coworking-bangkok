@@ -29,7 +29,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) { 
-  //Get the 
+  
   const currentUser = await getCurrentUser();
 
   return (
@@ -41,7 +41,10 @@ export default async function RootLayout({
         <RegisterModal />
         <Navbar currentUser={currentUser}/>
         <HomeBackground />
-        {children}</body>
+        <div className="pb-20 pt-28">
+        {children}
+        </div>
+        </body>
     </html>
   );
 }
