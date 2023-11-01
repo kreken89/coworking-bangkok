@@ -34,7 +34,6 @@ const Navbar = ({ currentUser }: NavbarProps) => {
             ">
             {/* <Logo /> */}
             <HomeLogo />
-            {/* <Search /> */}
             <UserMenu currentUser={currentUser} />
           </div>
         </Container>
