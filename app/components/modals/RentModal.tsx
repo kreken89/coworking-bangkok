@@ -50,7 +50,7 @@ const RentModal = () => {
         guestCount: 1,
         roomCount: 1,
         bathroomCount: 1,
-        imageSrc: '',
+        imageSrc: '', //Ändra till array
         price: 1,
         title: '',
         description: '',

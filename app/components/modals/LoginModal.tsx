@@ -117,7 +117,7 @@ const LoginModal = () => {
           items-center 
           gap-2
           ">
-            <div>Don't have an account yet?</div>
+            <div>Dont have an account yet?</div>
             <div
               onClick={toggle}
               className="
