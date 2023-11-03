@@ -1,17 +1,18 @@
 'use client';
-
+import HomepageTitle from './HomepageTitle';
 const HomeBackground = () => {
   return (
     <div
-      className=" h-screen bg-center"
+      className="flex items-center justify-center h-screen bg-center"
       style={{
-        backgroundImage: `url(/images/HeroHomePage.png)`,
+        backgroundImage: `url(/images/HomePage.png)`,
         backgroundSize: 'cover',
         width: '100%',
         height: '70vh',
         backgroundRepeat: 'no-repeat',
-      }}></div>
+      }}>
+      <HomepageTitle />
+    </div>
   );
 };
-
 export default HomeBackground;
