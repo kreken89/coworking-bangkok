@@ -31,10 +31,12 @@ const TripsPage = async () => {
     }
 
     return (
-        <TripsClient 
-            reservations={reservations}
-            currentUser={currentUser}
-        />
+        <div className='pb-20 pt-28'>
+            <TripsClient 
+                reservations={reservations}
+                currentUser={currentUser}
+            />
+        </div>
     )
 }
 

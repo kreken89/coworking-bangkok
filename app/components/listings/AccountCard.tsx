@@ -1,14 +1,16 @@
 'use client';
 
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
-import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
-import useCountries from "@/app/hooks/useCountries";
-import React, { useCallback, useMemo } from "react";
-import { format } from "date-fns";
-import Image from "next/image";
-import HeartButton from "../HeartButton";
-import Button from "../Button";
+import { SafeListing, SafeReservation, SafeUser } from '@/app/types';
+import useCountries from '@/app/hooks/useCountries';
+import React, { useCallback, useMemo } from 'react';
+import { format } from 'date-fns';
+import Image from 'next/image';
+import HeartButton from '../HeartButton';
+import Button from '../Button';
+import Heading from '../Heading';
+import { BsFillPencilFill } from 'react-icons/bs';
 
 interface AccountCardProps {
   data: SafeListing;
@@ -66,57 +68,54 @@ const AccountCard = ({
     return `${format(start, 'PP')} - ${format(end, 'PP')}`;
   }, [reservation]);
 
-  return (
-    <div
-      onClick={() => router.push(`/listings/${data.id}`)}
-      className="
-        col-span-1 cursor-pointer group">
-      <div className="flex flex-col gap-2 w-full">
+  return (      
+      <div
+        onClick={() => router.push(`/listings/${data.id}`)}
+        className="flex bg-white p-6 mb-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow">
         <div
           className="
-                aspect-square
-                w-full
-                relative
-                overflow-hidden
-                rounded-tr-3xl
-                rounded-bl-3xl
-                ">
+      aspect-square
+      relative
+      overflow-hidden
+      rounded
+      mr-4
+    "
+          style={{
+            height: '331px',
+            width: '468px',
+          }}>
           <Image
             fill
             alt="Listing"
             src={data.imageSrc}
             className="
-                    object-cover
-                    h-full
-                    w-full
-                    group-hover:scale-110
-                    transition
-                    "
+        object-cover
+        h-full
+        w-full
+        group-hover:scale-105
+        transition
+      "
           />
-          <div className="absolute top-3 right-3">
-            <HeartButton listingId={data.id} currentUser={currentUser} />
+        </div>
+        <div className="flex flex-col justify-between flex-grow">
+          <div>
+            <div className="flex flex-row justify-between">
+              <h2 className="text-2xl font-bold text-gray-800 mb-2">
+                {data.title}
+              </h2>
+              <div className="flex items-center space-x-2 text-gray-600 mb-20"></div>
+              <BsFillPencilFill size={40} />
+              {/* Add more icons or actions here as needed */}
+            </div>
+            <hr />
+            <p className="text-gray-600 mb-2">{data.description}</p>
+          </div>
+          <div className="flex justify-between items-center">
+            <p className="text-black-500 font-bold mb-2">{reservationDate}</p>
+            <span className="text-black-500 font-bold">${price} THB</span>
           </div>
         </div>
-        <div className="font-semibold text-lg">
-          {location?.region}, {location?.label}
-        </div>
-        <div className="font-light text-neutral-500">
-          {reservationDate || data.category}
-        </div>
-        <div className="flex flex-row items-center gap-1">
-          <div className="font-semibold">${price}</div>
-          {!reservation && <div className="font-light">night</div>}
-        </div>
-        {onAction && actionLabel && (
-          <Button
-            disabled={disabled}
-            small
-            label={actionLabel}
-            onClick={handleCancel}
-          />
-        )}
       </div>
-    </div>
   );
 };
 
