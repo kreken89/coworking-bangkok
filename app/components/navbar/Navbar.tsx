@@ -15,16 +15,11 @@ interface NavbarProps {
 
 const Navbar = ({ currentUser }: NavbarProps) => {
 
-
   return (
-    <div className="fixed w-full z-10">
-      <div
-        className="
-        py-4
-        ">
-        <Container>
-          <div
-            className="
+    <div className="fixed w-full z-10 px-4 py-4">
+      
+        <div
+          className="
             flex
             flex-row
             items-center
@@ -32,13 +27,12 @@ const Navbar = ({ currentUser }: NavbarProps) => {
             gap-3
             md:gap-0
             ">
-            {/* <Logo /> */}
-            <HomeLogo />
-            <Search />
-            <UserMenu currentUser={currentUser} />
-          </div>
-        </Container>
-      </div>
+          {/* <Logo /> */}
+          <HomeLogo />
+          <Search />
+          <UserMenu currentUser={currentUser} />
+        </div>
+      
       {/* <Categories /> */}
     </div>
   );

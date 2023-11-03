@@ -40,7 +40,7 @@ const TripsClient = ({ reservations, currentUser }: TripsClientProps) => {
   return (
     <Container>
       <Heading title="Account" />
-      <div className="bg-gray-800 text-white p-2">Booking</div>
+      <div className="bg-gray-800 text-white p-2">Bookings</div>
       <div
         className="
                 flex

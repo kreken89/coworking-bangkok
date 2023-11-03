@@ -3,6 +3,7 @@ import getListings, { IListingsParams } from "./actions/getListings";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import HomeBackground from "./components/HomeBackground";
+import SmallHero from "./components/SmallHero";
 import ListingCard from "./components/listings/ListingCard";
 
 interface HomeProps {
@@ -22,6 +23,7 @@ const Home = async ({ searchParams}: HomeProps) => {
   return (
     <>
       <HomeBackground />
+      <SmallHero />
       <Container>
         <div
           className="

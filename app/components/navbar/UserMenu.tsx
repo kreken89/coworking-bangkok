@@ -16,44 +16,49 @@ import useRentModal from '@/app/hooks/useRentModal';
 import { SafeUser } from '@/app/types';
 import useOutsideClick from '@/app/hooks/useOutsideClick';
 
-
 interface UserMenuProps {
-  currentUser?: SafeUser | null
+  currentUser?: SafeUser | null;
 }
 
-const UserMenu = ({ currentUser }: UserMenuProps ) => {
-  currentUser
+const UserMenu = ({ currentUser }: UserMenuProps) => {
+  currentUser;
 
   const router = useRouter();
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const rentModal = useRentModal();
-  
-  const[isOpen, setIsOpen] = useState(false);
+
+  const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
 
-    useOutsideClick(wrapperRef, () => {
-      setIsOpen(false);
-    });
+  useOutsideClick(wrapperRef, () => {
+    setIsOpen(false);
+  });
 
-    const toggleOpen = useCallback(() => {
-        setIsOpen((value) => !value);
-    }, []);
+  const toggleOpen = useCallback(() => {
+    setIsOpen((value) => !value);
+  }, []);
 
-    const onRent = useCallback(() => {
-      if (!currentUser) {
-        return loginModal.onOpen();
-      }
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
 
-      rentModal.onOpen();
-    }, [currentUser, loginModal, rentModal ]);
+    rentModal.onOpen();
+  }, [currentUser, loginModal, rentModal]);
+
+  const handleCloseOnClick = (path: string) => {
+    setIsOpen(false);
+    router.push(path);
+  }
 
   return (
     <div className="relative" ref={wrapperRef}>
       <div className="flex flex-row items-center gap-3">
-        <div
+        {/* <div
           onClick={onRent}
           className="
+            bg-white
             hidden
             md:block
             text-sm
@@ -65,8 +70,8 @@ const UserMenu = ({ currentUser }: UserMenuProps ) => {
             transition
             cursor-pointer
             ">
-          Co Working Bangkok
-        </div>
+          Add listing
+        </div> */}
         <div
           //   onClick={toggleOpen}
           className="
@@ -84,50 +89,59 @@ const UserMenu = ({ currentUser }: UserMenuProps ) => {
             hover:shadow-md
             transition
           ">
-          <AiOutlineMenu />
+          <AiOutlineMenu className="react-icon-computer" />
         </div>
         <div
           onClick={toggleOpen}
-          className="
-            bg-lightestGray
-            p-4
-            md_py-1
-            md_px-2
-            border-[1px]
-            border-neutral-200
-            flex
-            flex-row
-            items-center
-            rounded-full
-            cursor-pointer
-            hover:shadow-md
-            transition
-            ">
-          {/* <BiSolidUser /> */}
-          <div className="hidden md:block">
-            <Avatar src={currentUser?.image} />
+          className={
+            currentUser
+              ? ''
+              : `
+                bg-lightestGray
+                p-4
+                md_py-1
+                md_px-2
+                border-[1px]
+                border-neutral-200
+                flex
+                flex-row
+                items-center
+                rounded-full
+                cursor-pointer
+                hover:shadow-md
+                transition
+            `
+          }>
+          {currentUser ? (
+            // Render the Avatar with the user's image if currentUser exists (i.e., user is logged in)
+            // Removed the "hidden md:block" class to make the avatar always visible
+            <Avatar src={currentUser.image} />
+          ) : (
+            // Render the default user icon if currentUser is null or undefined (i.e., user is logged out)
+            <BiSolidUser className="react-icon-computer" />
+          )}
+        </div>
+        {currentUser ? (
+          <div
+            onClick={() => signOut()}
+            className="
+                  bg-lightestGray
+                  p-4
+                  md_py-1
+                  md_px-2
+                  border-[1px]
+                  border-neutral-200
+                  flex
+                  flex-row
+                  items-center
+                  rounded-full
+                  cursor-pointer
+                  hover:shadow-md
+                  transition
+                  ">
+            <FiLogOut className="react-icon-computer" />
           </div>
-        </div>
-        <div
-          onClick={() => {}}
-          className="
-            bg-lightestGray
-            p-4
-            md_py-1
-            md_px-2
-            border-[1px]
-            border-neutral-200
-            flex
-            flex-row
-            items-center
-            rounded-full
-            cursor-pointer
-            hover:shadow-md
-            transition
-            ">
-          <FiLogOut />
-          {/* <div className="hidden md:block"><Avatar /></div> */}
-        </div>
+        ) : null}
       </div>
 
       {isOpen && (
@@ -148,26 +162,23 @@ const UserMenu = ({ currentUser }: UserMenuProps ) => {
             {currentUser ? (
               <>
                 <MenuItem
-                  onClick={() => router.push('/trips')}
+                  onClick={() => handleCloseOnClick('/trips')}
                   label="My Account"
                 />
                 <MenuItem
-                  onClick={() => router.push('/favorites')}
+                  onClick={() => handleCloseOnClick('/favorites')}
                   label="My favorites"
                 />
                 <MenuItem
-                  onClick={() => router.push('/reservations')}
+                  onClick={() => handleCloseOnClick('/reservations')}
                   label="My reservations"
                 />
                 <MenuItem
-                  onClick={() => router.push('/properties')}
+                  onClick={() => handleCloseOnClick('/properties')}
                   label="My Properties"
                 />
-                <MenuItem
-                  onClick={rentModal.onOpen}
-                  label="Co working bangkok home"
-                />
-                <MenuItem onClick={() => signOut()} label="Logout" />
+                <MenuItem onClick={rentModal.onOpen} label="Add listing" />
+                {/* <MenuItem onClick={() => signOut()} label="Logout" /> */}
                 {/* <MenuItem onClick={() => {}} label="Account" /> */}
               </>
             ) : (

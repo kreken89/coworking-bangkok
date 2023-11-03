@@ -8,8 +8,9 @@ const HomeLogo = () => {
 
   return (
     <div
-          onClick={() => router.push('/')}
-          className="
+      onClick={() => router.push('/')}
+      className="
+          
             bg-lightestGray
             p-4
             md_py-1
@@ -24,8 +25,8 @@ const HomeLogo = () => {
             hover:shadow-md
             transition
             ">
-            <BiSolidHome />
-        </div>
+      <BiSolidHome className="react-icon-computer" />
+    </div>
   );
 };
 
