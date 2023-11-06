@@ -57,12 +57,11 @@ const ListingReservation = ({
         />
       </div>
       <div className='
-        flex flex-row items-center justify-between
-        p-4
-        flex
+        flex 
         flex-row
-        items-center
+        items-center 
         justify-between
+        p-4
         font-semibold
         text-lg
       '>

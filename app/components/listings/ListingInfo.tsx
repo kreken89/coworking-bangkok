@@ -31,7 +31,8 @@ const ListingInfo = ({
         const coordinates = getByValue(locationValue)?.latlng;
   return (
     <div className=" col-span-4 flex flex-col gap-8">
-      <div className="flex flex-col gap-2">
+      
+      {/* <div className="flex flex-col gap-2">
         <div
           className="
             text-xl
@@ -41,8 +42,8 @@ const ListingInfo = ({
             items-center
             gap-2
         ">
-          {/* <div> Hosted by {user?.name}</div> */}
-          {/* <Avatar src={user?.image} /> */}
+          <div> Hosted by {user?.name}</div>
+          <Avatar src={user?.image} />
         </div>
         <div
           className="
@@ -53,25 +54,19 @@ const ListingInfo = ({
                 font-light
                 text-gray
             ">
-          {/* <div>{guestCount} guests</div>
+          <div>{guestCount} guests</div>
           <div>{roomCount} rooms</div>
-          <div>{bathroomCount} bathrooms</div> */}
+          <div>{bathroomCount} bathrooms</div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="border-[1px]">
+      <div className="border-[1px] w-[fit-content] rounded-tr-lg rounded-bl-lg p-1">
         {category && (
-          <ListingCategory 
-              icon={category.icon}
-              label={category.label}
-
-          />
+          <ListingCategory icon={category.icon} label={category.label} />
         )}
       </div>
 
-      <div className="text-lg font-light text-neutral-500">
-        {description}
-      </div>
+      <div className="text-lg font-light text-gray mb-20">{description}</div>
       <Map center={coordinates} />
     </div>
   );

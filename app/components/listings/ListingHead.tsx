@@ -42,7 +42,7 @@ const ListingHead = ({ title, locationValue, imageSrc, id, currentUser }: Listin
 
       <Heading
         title={title}
-        icon={<IoLocationOutline size={24} className="text-semilightgray" />}
+        icon={<IoLocationOutline size={16} className="text-semilightgray" />}
         subtitle={`${location?.region}, ${location?.label}`}
       />
     </>
