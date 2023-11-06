@@ -12,7 +12,6 @@ interface HeadingProps {
 const Heading = ({ title, subtitle, center, icon }: HeadingProps) => {
 
   return (
-    <div className="max-w-[60%]">
       <div className={center ? 'text-center' : 'text-start'}>
         <div className="text-6xl font-bold font-poppins text-darkgray">
           {title}
@@ -28,7 +27,6 @@ const Heading = ({ title, subtitle, center, icon }: HeadingProps) => {
           </span>
         </div>
       </div>
-    </div>
   );
 }
 

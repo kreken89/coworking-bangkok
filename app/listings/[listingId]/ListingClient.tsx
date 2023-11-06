@@ -105,7 +105,7 @@ const ListingClient = ({ listing, currentUser, reservations = [] }: ListingClien
 
   return (
     <Container>
-        <div className="max-w-screen-lg mx-auto ">
+        <div className="max-w-screen-4xl mx-auto ">
             <div className="flex flex-col gap-6 ">
                 <ListingHead 
                     title={listing.title}
