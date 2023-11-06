@@ -9,7 +9,7 @@ const SmallHero = () => {
       justify-center
       gap-4
       p-8
-      max-w-4xl
+      max-w-2xl
       mx-auto // center
       rounded-3xl
       opacity-90

@@ -20,7 +20,6 @@ interface ListingInfoProps {
     category: {
         icon: IconType;
         label: string;
-        description: string;
     } | undefined
     locationValue: string;
 }
@@ -42,8 +41,8 @@ const ListingInfo = ({
             items-center
             gap-2
         ">
-          <div> Hosted by {user?.name}</div>
-          <Avatar src={user?.image} />
+          {/* <div> Hosted by {user?.name}</div> */}
+          {/* <Avatar src={user?.image} /> */}
         </div>
         <div
           className="
@@ -52,26 +51,27 @@ const ListingInfo = ({
                 items-center
                 gap-4
                 font-light
-                text-neutral-500
+                text-gray
             ">
-          <div>{guestCount} guests</div>
+          {/* <div>{guestCount} guests</div>
           <div>{roomCount} rooms</div>
-          <div>{bathroomCount} bathrooms</div>
+          <div>{bathroomCount} bathrooms</div> */}
         </div>
       </div>
-      <hr />
-      {category && (
-        <ListingCategory 
-            icon={category.icon}
-            label={category.label}
-            description={category.description}
-        />
-      )}
-      <hr />
+
+      <div className="border-[1px]">
+        {category && (
+          <ListingCategory 
+              icon={category.icon}
+              label={category.label}
+
+          />
+        )}
+      </div>
+
       <div className="text-lg font-light text-neutral-500">
         {description}
       </div>
-      <hr />
       <Map center={coordinates} />
     </div>
   );

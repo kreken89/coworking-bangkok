@@ -11,6 +11,7 @@ import Heading from "../components/Heading";
 import { SafeReservation, SafeUser } from "../types"
 import AccountCard from "../components/listings/AccountCard";
 import ListingCard from "../components/listings/ListingCard";
+import { BiSolidUser } from "react-icons/bi";
 
 interface TripsClientProps {
     reservations: SafeReservation[];
@@ -39,8 +40,14 @@ const TripsClient = ({ reservations, currentUser }: TripsClientProps) => {
 
   return (
     <Container>
-      <Heading title="Account" />
-      <div className="bg-gray-800 text-white p-2">Bookings</div>
+      <div className="flex ">
+        <BiSolidUser size={28} />
+        <Heading title="Account" />
+      </div>
+      <div className="bg-darkgray">
+        <div className="ml-5 text-white p-2">Bookings</div>
+      </div>
+
       <div
         className="
                 flex
@@ -48,19 +55,21 @@ const TripsClient = ({ reservations, currentUser }: TripsClientProps) => {
                 gap-8
                 
         ">
-        {reservations.map((reservation) => (
-          <AccountCard data={reservation.listing} reservation={reservation} />
-          // <ListingCard
-          //     key={reservation.id}
-          //     data={reservation.listing}
-          //     reservation={reservation}
-          //     actionId={reservation.id}
-          //     onAction={onCancel}
-          //     disabled={deletingId === reservation.id}
-          //     actionLabel="Cancel reservation"
-          //     currentUser={currentUser}
-          // />
-        ))}
+        
+          {reservations.map((reservation) => (
+            <AccountCard data={reservation.listing} reservation={reservation} />
+            // <ListingCard
+            //     key={reservation.id}
+            //     data={reservation.listing}
+            //     reservation={reservation}
+            //     actionId={reservation.id}
+            //     onAction={onCancel}
+            //     disabled={deletingId === reservation.id}
+            //     actionLabel="Cancel reservation"
+            //     currentUser={currentUser}
+            // />
+          ))}
+        
       </div>
     </Container>
   );
