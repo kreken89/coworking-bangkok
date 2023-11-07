@@ -1,5 +1,6 @@
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings, { IListingsParams } from "./actions/getListings";
+import CoffeeBanner from "./components/CoffeeBanner";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import HomeBackground from "./components/HomeBackground";
@@ -24,6 +25,7 @@ const Home = async ({ searchParams}: HomeProps) => {
     <>
       <HomeBackground />
       <SmallHero />
+      <CoffeeBanner />
       <Container>
         <div
           className="
