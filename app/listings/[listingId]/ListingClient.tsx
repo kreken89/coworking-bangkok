@@ -140,7 +140,8 @@ const ListingClient = ({ listing, currentUser, reservations = [] }: ListingClien
                       "
                     >
                         <ListingClientRight />
-                        {/* <ListingReservation 
+                        
+                        <ListingReservation 
                             price={listing.price}
                             totalPrice={totalPrice}
                             onChangeDate={(value) => setDateRange(value)}
@@ -148,7 +149,7 @@ const ListingClient = ({ listing, currentUser, reservations = [] }: ListingClien
                             onSubmit={onCreateReservation}
                             disabled={isLoading}
                             disabledDates={disabledDates}
-                        />        */}
+                        />       
                     </div>
                 </div>
             </div>
