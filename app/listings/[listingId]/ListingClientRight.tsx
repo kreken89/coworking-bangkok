@@ -11,6 +11,7 @@ const ListingClientRight = () => {
     <div>
       <Pricing />
       <Button label="Book Now" onClick={() => router.push('/')} />
+  {/* <MenuItem label="Add listing" onClick={rentModal.onOpen} /> */}
       <Ratings />
     </div>
   );

@@ -248,7 +248,7 @@ const RentModal = () => {
     if (step === STEPS.PRICE) {
       bodyContent = (
         <div className="flex flex-col gap-8">
-          <Heading 
+          <Heading
             title="How much do you charge?"
             subtitle="Set a price for your space"
           />
@@ -261,10 +261,9 @@ const RentModal = () => {
             register={register}
             errors={errors}
             required
-            />
-
+          />
         </div>
-      )
+      );
     }
 
   return (
