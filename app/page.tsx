@@ -5,6 +5,7 @@ import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import HomeBackground from "./components/HomeBackground";
 import SmallHero from "./components/SmallHero";
+import TukTukBanner from "./components/TukTuk";
 import ListingCard from "./components/listings/ListingCard";
 
 interface HomeProps {
@@ -23,12 +24,11 @@ const Home = async ({ searchParams}: HomeProps) => {
 
   return (
     <>
-      <HomeBackground />
-      <SmallHero />
-      <CoffeeBanner />
-      <Container>
-        <div
-          className="
+        <HomeBackground />
+        <SmallHero />
+        <Container>
+          <div
+            className="
             pt-2
             grid
             grid-cols-1
@@ -37,20 +37,22 @@ const Home = async ({ searchParams}: HomeProps) => {
             max-w-4xl
             mx-auto
             gap-8
-      
-      ">
-          {/* lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 */}
-          {listings.map((listing) => {
-            return (
-              <ListingCard
+            
+            ">
+            {/* lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 */}
+            {listings.map((listing) => {
+              return (
+                <ListingCard
                 currentUser={currentUser}
                 key={listing.id}
                 data={listing}
-              />
-            );
-          })}
-        </div>
-      </Container>
+                />
+                );
+              })}
+          </div>
+        </Container>
+        <TukTukBanner />
+        <CoffeeBanner />
     </>
   );
 }
