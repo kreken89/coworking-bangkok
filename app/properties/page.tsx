@@ -31,13 +31,10 @@ const PropertiesPage = async () => {
     }
 
     return (
-        <div className='pb-20 pt-28'>
-        <PropertiesClient 
-            listings={listings}
-            currentUser={currentUser}
-        />
-        </div>
-    )
+      <div className="pb-20 pt-28">
+        <PropertiesClient listings={listings} currentUser={currentUser} />
+      </div>
+    );
 }
 
 export default PropertiesPage;

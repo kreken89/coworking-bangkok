@@ -1,5 +1,6 @@
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings, { IListingsParams } from "./actions/getListings";
+import ArraySlicer from "./components/ArraySlicer";
 import CoffeeBanner from "./components/CoffeeBanner";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
@@ -24,10 +25,10 @@ const Home = async ({ searchParams}: HomeProps) => {
 
   return (
     <>
-        <HomeBackground />
-        <SmallHero />
-        <Container>
-          <div
+      <HomeBackground />
+      <SmallHero />
+      <Container>
+        {/* <div
             className="
             pt-2
             grid
@@ -39,7 +40,6 @@ const Home = async ({ searchParams}: HomeProps) => {
             gap-8
             
             ">
-            {/* lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 */}
             {listings.map((listing) => {
               return (
                 <ListingCard
@@ -49,10 +49,36 @@ const Home = async ({ searchParams}: HomeProps) => {
                 />
                 );
               })}
-          </div>
-        </Container>
-        <CoffeeBanner />
-        <TukTukBanner />
+          </div> */}
+        <div className="py-6 md:pt-20 md:pb-4 ">
+          <ArraySlicer
+            listings={listings.slice(0, 3)}
+            currentUser={currentUser}
+          />
+        </div>
+      </Container>
+
+      <TukTukBanner />
+
+      <Container>
+        <div className="py-6 md:pt-20 md:pb-4">
+          <ArraySlicer
+            listings={listings.slice(3, 6)}
+            currentUser={currentUser}
+          />
+        </div>
+      </Container>
+
+      <CoffeeBanner />
+
+      <Container>
+        <div className="py-6 md:pt-20 md:pb-4">
+          <ArraySlicer
+            listings={listings.slice(6, 9)}
+            currentUser={currentUser}
+          />
+        </div>
+      </Container>
     </>
   );
 }
