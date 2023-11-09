@@ -51,8 +51,8 @@ const Home = async ({ searchParams}: HomeProps) => {
               })}
           </div>
         </Container>
-        <TukTukBanner />
         <CoffeeBanner />
+        <TukTukBanner />
     </>
   );
 }

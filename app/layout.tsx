@@ -12,6 +12,7 @@ import RegisterModal from './components/modals/RegisterModal'
 import LoginModal from './components/modals/LoginModal'
 import RentModal from './components/modals/RentModal'
 import SearchModal from "./components/modals/SearchModal"
+import Footer from "./components/footer/Footer"
 
 
 
@@ -46,6 +47,7 @@ export default async function RootLayout({
         <div className="">
         {children}
         </div>
+        <Footer />
         </body>
     </html>
   );

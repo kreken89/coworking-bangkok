@@ -68,15 +68,15 @@ const ListingCard = ({
   }, [reservation]);
 
   return (
-    <div
-      onClick={() => router.push(`/listings/${data.id}`)}
-      className="
+      <div
+        onClick={() => router.push(`/listings/${data.id}`)}
+        className="
         col-span-1
         cursor-pointer
         group
         ">
-      <div
-        className="
+        <div
+          className="
         flex
         flex-col
         rounded-tr-4xl
@@ -84,60 +84,59 @@ const ListingCard = ({
         overflow-hidden
         h-full
         "
-        style={{
-          height: '400px',
-        }}>
-        <div
-          className="
+          style={{
+            height: '400px',
+          }}>
+          <div
+            className="
             h-full
             relative   
             ">
-          <Image
-            fill
-            src={data.imageSrc}
-            alt="Listing"
-            className="
+            <Image
+              fill
+              src={data.imageSrc}
+              alt="Listing"
+              className="
             object-cover
             transition
             group-hover:scale-110   
             "
-          />
-          <div className="absolute top-2 right-2">
-            <HeartButton listingId={data.id} currentUser={currentUser} />
+            />
+            <div className="absolute top-2 right-2">
+              <HeartButton listingId={data.id} currentUser={currentUser} />
+            </div>
+            <div
+              style={{
+                background:
+                  'linear-gradient(180deg, #FFFFFF 58.85%, rgba(255, 255, 255, 0.00) 100%)',
+              }}
+              className="absolute bottom-2 left-0 right-0 mx-2  rounded-tr-3xl rounded-bl-3xl p-3 bg-red-100">
+              <div className="font-rajhadi font-semibold text-lg mb-3">
+                {location?.region}, {location?.label}
+              </div>
+              <div className="font-rajhadi flex flex-row gap-1 font-light text-neutral-800 mb-3">
+                <IoLocationOutline /> {reservationDate || data.category}
+              </div>
+              <div className="flex flex-row items-center gap-1 bg-white p-1 rounded-tr-2xl rounded-bl-2xl w-1/2 justify-center ml-auto">
+                <div className="font-poppins font-bold">${price}</div>
+                {!reservation && (
+                  <div className="font-poppins font-bold">/Week</div>
+                )}
+              </div>
+            </div>
           </div>
-          <div
-            style={{
-              background:
-                'linear-gradient(180deg, #FFFFFF 58.85%, rgba(255, 255, 255, 0.00) 100%)',
-            }}
-            className="absolute bottom-2 left-0 right-0 mx-2  rounded-tr-3xl rounded-bl-3xl p-3 bg-red-100">
-            <div className="font-rajhadi font-semibold text-lg mb-3">
-              {location?.region}, {location?.label}
-            </div>
-            <div className="font-rajhadi flex flex-row gap-1 font-light text-neutral-800 mb-3">
-              <IoLocationOutline /> {reservationDate || data.category}
-            </div>
-            <div className="flex flex-row items-center gap-1 bg-white p-1 rounded-tr-2xl rounded-bl-2xl w-1/2 justify-center ml-auto">
-              <div className="font-poppins font-bold">${price}</div>
-              {!reservation && (
-                <div className="font-poppins font-bold">/Week</div>
-              )}
-            </div>
-          </div>
-        </div>
-        <div>
-        </div>
+          <div></div>
 
-        {onAction && actionLabel && (
-          <Button
-            disabled={disabled}
-            small
-            label={actionLabel}
-            onClick={handleCancel}
-          />
-        )}
+          {onAction && actionLabel && (
+            <Button
+              disabled={disabled}
+              small
+              label={actionLabel}
+              onClick={handleCancel}
+            />
+          )}
+        </div>
       </div>
-    </div>
   );
 };
 
