@@ -54,6 +54,7 @@ const ListingClient = ({
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
   const [dateRange, setDateRange] = useState<Range>(initialDateRange);
+
   const onCreateReservation = useCallback(() => {
     if (!currentUser) {
       return loginModal.onOpen();
@@ -76,6 +77,7 @@ const ListingClient = ({
         toast.error('Reservation failed');
       });
   }, [totalPrice, dateRange, listing?.id, router, loginModal, currentUser]);
+  
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
       const dayCount = differenceInCalendarDays(
