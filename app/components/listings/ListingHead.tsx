@@ -40,11 +40,11 @@ const ListingHead = ({ title, locationValue, imageSrc, id, currentUser }: Listin
         </div>
       </div>
 
-      <Heading
+      {/* <Heading
         title={title}
         icon={<IoLocationOutline size={16} className="text-semilightgray" />}
         subtitle={`${location?.region}, ${location?.label}`}
-      />
+      /> */}
     </>
   );
 }

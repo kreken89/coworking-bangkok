@@ -6,17 +6,17 @@ import { IconType } from "react-icons";
 import Avatar from "../Avatar";
 import ListingCategory from "./ListingCategory";
 import dynamic from "next/dynamic";
+import Heading from "../Heading";
+import { IoLocationOutline } from "react-icons/io5";
 
 const Map = dynamic(() => import('../Map'), {
     ssr: false,
 });
 
 interface ListingInfoProps {
+    title: string;
     user: SafeUser;
     description: string;
-    guestCount: number;
-    roomCount: number;
-    bathroomCount: number;
     category: {
         icon: IconType;
         label: string;
@@ -24,41 +24,19 @@ interface ListingInfoProps {
     locationValue: string;
 }
 
-const ListingInfo = ({ 
-    user, description, guestCount, roomCount, bathroomCount, category, locationValue}: ListingInfoProps) => {
+const ListingInfo = ({ title, user, description, category, locationValue}: ListingInfoProps) => {
 
         const { getByValue } = useCountries();
         const coordinates = getByValue(locationValue)?.latlng;
+        const location = getByValue(locationValue);
+
   return (
     <div className=" col-span-4 flex flex-col gap-8">
-      
-      {/* <div className="flex flex-col gap-2">
-        <div
-          className="
-            text-xl
-            font-semibold
-            flex
-            flex-row
-            items-center
-            gap-2
-        ">
-          <div> Hosted by {user?.name}</div>
-          <Avatar src={user?.image} />
-        </div>
-        <div
-          className="
-                flex
-                flex-row
-                items-center
-                gap-4
-                font-light
-                text-gray
-            ">
-          <div>{guestCount} guests</div>
-          <div>{roomCount} rooms</div>
-          <div>{bathroomCount} bathrooms</div>
-        </div>
-      </div> */}
+      <Heading
+        title={title}
+        icon={<IoLocationOutline size={16} className="text-semilightgray" />}
+        subtitle={`${location?.region}, ${location?.label}`}
+      />
 
       <div className="border-[1px] w-[fit-content] rounded-tr-lg rounded-bl-lg p-1">
         {category && (
