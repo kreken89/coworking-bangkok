@@ -89,9 +89,10 @@ const BookingModal = ({
             my-6
             mx-auto
             h-full
-            lg:h-auto
-            md:h-auto
-            ">
+            
+            "
+            style={({ maxHeight: '50vh' })}
+            >
           {/*content*/}
           <div
             className={`
@@ -144,9 +145,9 @@ const BookingModal = ({
                 </button>
                 
               </div>
-              {/*body*/}
+              
               <div className="relative p-6 flex-auto">
-                {body}
+                {body} 
               </div>
               {/*footer*/}
               <div className="flex flex-col gap-2 p-6">

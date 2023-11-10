@@ -21,6 +21,7 @@ const initialDateRange = {
   endDate: new Date(),
   key: 'selection',
 };
+
 interface ListingClientProps {
   reservations?: SafeReservation[];
   listing: SafeListing & {
@@ -29,17 +30,20 @@ interface ListingClientProps {
   currentUser?: SafeUser | null;
   locationValue: string;
 }
+
 const ListingClient = ({
   listing,
   currentUser,
   reservations = [],
   locationValue,
 }: ListingClientProps) => {
+
   const loginModal = useLoginModal();
   const router = useRouter();
   const { getByValue } = useCountries();
   const coordinates = getByValue(locationValue)?.latlng;
   const location = getByValue(locationValue);
+
   const disabledDates = useMemo(() => {
     let dates: Date[] = [];
     reservations.forEach((reservation) => {
@@ -51,9 +55,12 @@ const ListingClient = ({
     });
     return dates;
   }, [reservations]);
+
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
   const [dateRange, setDateRange] = useState<Range>(initialDateRange);
+
+
 
   const onCreateReservation = useCallback(() => {
     if (!currentUser) {
@@ -78,6 +85,8 @@ const ListingClient = ({
       });
   }, [totalPrice, dateRange, listing?.id, router, loginModal, currentUser]);
   
+
+
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
       const dayCount = differenceInCalendarDays(
@@ -91,9 +100,13 @@ const ListingClient = ({
       }
     }
   }, [dateRange, listing.price]);
+
+
   const category = useMemo(() => {
     return categories.find((item) => item.label === listing.category);
   }, [listing.category]);
+
+  
   return (
     <Container>
       <div className="max-w-screen-4XL mx-auto">
@@ -129,7 +142,10 @@ const ListingClient = ({
               md:col-span-3
               ">
               <div className=" md:col-span-3">
-                <ListingClientRight />
+                <ListingClientRight 
+                  currentUser={currentUser}
+                  listing={listing}
+                />
               </div>
               <ListingReservation
                 price={listing.price}

@@ -5,8 +5,14 @@ import Ratings from '@/app/components/Ratings';
 import ConfirmationModal from '@/app/components/modals/ConfirmationModal';
 import CheckoutModal from '@/app/components/modals/CheckoutModal';
 import useCheckoutModal from '@/app/hooks/useCheckoutModal';
+import { SafeListing } from '@/app/types';
 
-const ListingClientRight = () => {
+interface ListingClientRightProps {
+  currentUser?: any;
+  listing: SafeListing;
+}
+
+const ListingClientRight = ({currentUser, listing}:ListingClientRightProps) => {
   const { isOpen, onOpen } = useCheckoutModal();
   
 
@@ -14,7 +20,10 @@ const ListingClientRight = () => {
     <div>
       <Pricing />
       <Button label="Open Booking Modal" onClick={onOpen} />
-      {isOpen && <CheckoutModal />}
+      {isOpen && <CheckoutModal 
+        listing={listing}
+        currentUser={currentUser}
+      />}
       {isOpen && <ConfirmationModal />}
       <Ratings />
     </div>
