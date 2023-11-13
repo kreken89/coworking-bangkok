@@ -19,31 +19,41 @@ const initialDateRange = {
   endDate: new Date(),
   key: "selection",
 };
+
 interface CheckoutModalProps {
   listing: SafeListing;
   currentUser?: SafeUser | null;
+  price?: number;
 }
+
 const CheckoutModal = ({
   listing,
   currentUser,
 }: CheckoutModalProps) => {
+
   const { isOpen, onClose } = useCheckoutModal();
+  
   // const modalRef = useRef(null);
   const router = useRouter();
   const loginModal = useLoginModal();
+
   const [dateRange, setDateRange] = useState<Range>({
     startDate: new Date(),
     endDate: new Date(),
     key: "selection",
   });
+
   const [totalPrice, setTotalPrice] = useState(100); // Example base price
   const [disabledDates, setDisabledDates] = useState([]); // You would get this from props or context
   const [isLoading, setIsLoading] = useState(false);
+
   const onCreateReservation = useCallback(() => {
     if (!currentUser) {
+      onClose();
       return loginModal.onOpen();
     }
     setIsLoading(true);
+
     axios
       .post("/api/reservations", {
         totalPrice,
@@ -51,16 +61,20 @@ const CheckoutModal = ({
         endDate: dateRange.endDate,
         listingId: listing.id,
       })
+
       .then(() => {
         toast.success("Reservation created successfully");
         setDateRange(initialDateRange);
         //redirect to accounts
         router.push("/trips");
+        onClose();
       })
+
       .catch(() => {
         toast.error("Reservation failed");
       });
   }, [totalPrice, dateRange, listing?.id, router, loginModal, currentUser]);
+
   // Replicate date change effect
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
@@ -75,17 +89,20 @@ const CheckoutModal = ({
       }
     }
   }, [dateRange, listing.price]);
+  
   // Handle reservation submission
   const handleReservationSubmit = () => {
     setIsLoading(true);
     // Make API call to create reservation
-    // ...
+    // Then close modal
   };
+
   // Close modal and clear state
   const handleModalClose = () => {
     onClose();
     // Optionally reset state
   };
+
   return (
     <BookingModal
       isOpen={isOpen}
@@ -98,7 +115,7 @@ const CheckoutModal = ({
               <h1>Choose dates</h1>
             </div>
             <ListingReservation
-              price={100} // Replace with actual price per night
+              price={listing.price} // Replace with actual price per night
               dateRange={dateRange}
               totalPrice={totalPrice}
               onChangeDate={(value) => setDateRange(value)}
@@ -130,7 +147,7 @@ const CheckoutModal = ({
             // className="text-center text-seventyeight font-bold p-20 cursor-pointer"
             // ref={modalRef}
             >
-              
+
             </div>
           </div>
         </div>

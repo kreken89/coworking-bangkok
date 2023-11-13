@@ -4,6 +4,7 @@ import { Range } from 'react-date-range';
 
 import Calendar from '../inputs/Calendar';
 import Button from '../Button';
+import useConfirmationModal from '@/app/hooks/useConfirmationModal';
 
 interface ListingReservationProps {
     price: number;
@@ -24,6 +25,19 @@ const ListingReservation = ({
     disabled, 
     disabledDates 
 }: ListingReservationProps) => {
+
+  const { isOpen, onOpen, onClose } = useConfirmationModal();
+
+  const handleButtonClick = () => {
+    // Open the confirmation modal
+    onOpen();
+
+    // Call the onSubmit function after a delay (you can adjust the delay as needed)
+    setTimeout(() => {
+      onSubmit();
+      onClose();
+    }, 8000); // Example delay of 500 milliseconds
+  };
     
   return (
     <div
@@ -53,7 +67,7 @@ const ListingReservation = ({
         <Button 
             disabled={disabled}
             label="Book now"
-            onClick={onSubmit}
+            onClick={handleButtonClick}
         />
       </div>
       <div className='

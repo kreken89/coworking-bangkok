@@ -10,20 +10,26 @@ import { SafeListing } from '@/app/types';
 interface ListingClientRightProps {
   currentUser?: any;
   listing: SafeListing;
+ 
 }
 
-const ListingClientRight = ({currentUser, listing}:ListingClientRightProps) => {
+const ListingClientRight = ({
+  currentUser,
+  listing }: ListingClientRightProps) => {
+
   const { isOpen, onOpen } = useCheckoutModal();
-  
 
   return (
     <div>
       <Pricing />
-      <Button label="Open Booking Modal" onClick={onOpen} />
-      {isOpen && <CheckoutModal 
-        listing={listing}
-        currentUser={currentUser}
-      />}
+      <Button label="Book now!" onClick={onOpen} />
+      {isOpen && (
+        <CheckoutModal
+          listing={listing}
+          currentUser={currentUser}
+          
+        />
+      )}
       {isOpen && <ConfirmationModal />}
       <Ratings />
     </div>
