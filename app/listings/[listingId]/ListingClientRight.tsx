@@ -5,12 +5,13 @@ import Ratings from '@/app/components/Ratings';
 import ConfirmationModal from '@/app/components/modals/ConfirmationModal';
 import CheckoutModal from '@/app/components/modals/CheckoutModal';
 import useCheckoutModal from '@/app/hooks/useCheckoutModal';
-import { SafeListing } from '@/app/types';
+import { SafeListing, SafeUser } from '@/app/types';
 
 interface ListingClientRightProps {
   currentUser?: any;
-  listing: SafeListing;
- 
+  listing: SafeListing & {
+    user: SafeUser;
+  };
 }
 
 const ListingClientRight = ({

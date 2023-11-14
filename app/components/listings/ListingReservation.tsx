@@ -36,7 +36,7 @@ const ListingReservation = ({
     setTimeout(() => {
       onSubmit();
       onClose();
-    }, 8000); // Example delay of 500 milliseconds
+    }, 3000); // Example delay of 500 milliseconds
   };
     
   return (

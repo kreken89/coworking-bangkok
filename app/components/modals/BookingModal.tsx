@@ -87,11 +87,10 @@ const BookingModal = ({
             lg:w-4/5
             xl:w-4/5
             my-6
-            mx-auto
-            h-full
+            
             
             "
-            style={({ maxHeight: '50vh' })}
+            
             >
           {/*content*/}
           <div
