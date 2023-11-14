@@ -68,7 +68,7 @@ const BookingModal = ({
       <div
         className="
         justify-center
-        items-center
+        
         flex
         overflow-x-hidden
         overflow-y-auto
@@ -84,6 +84,7 @@ const BookingModal = ({
             relative
             flex
             justify-center
+
             w-full
             mxs:w-3/6
             md:w-6/6

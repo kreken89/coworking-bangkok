@@ -46,7 +46,7 @@ const TripsClient = ({ reservations, currentUser }: TripsClientProps) => {
       </div>
 
       <div className="bg-darkgray">
-        <div className="ml-5 text-white p-2 font-bold text-mobile-twentyfour lg:text-thirtysix">
+        <div className="ml-5 text-white p-2 mb-5 font-bold text-mobile-twentyfour lg:text-thirtysix">
           Bookings
         </div>
       </div>

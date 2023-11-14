@@ -16,7 +16,7 @@ const Map = dynamic(() => import('../Map'), {
 interface ListingInfoProps {
     title: string;
     user: SafeUser;
-    description: string;
+    description?: string;
     category: {
         icon: IconType;
         label: string;
@@ -24,7 +24,7 @@ interface ListingInfoProps {
     locationValue: string;
 }
 
-const ListingInfo = ({ title, user, description, category, locationValue}: ListingInfoProps) => {
+const ListingInfo = ({ title, user, description, category, locationValue }: ListingInfoProps) => {
 
         const { getByValue } = useCountries();
         const coordinates = getByValue(locationValue)?.latlng;
@@ -44,7 +44,7 @@ const ListingInfo = ({ title, user, description, category, locationValue}: Listi
         )}
       </div>
 
-      <div className="text-lg font-light text-gray mb-20">{description}</div>
+      <div className="text-lg font-light text-gray">{description}</div>
       {/* <Map center={coordinates} /> */}
     </div>
   );

@@ -104,8 +104,9 @@ const AccountCard = ({
             <h2 className="text-mobile sm:text-twenty md:text-thirtysix lg:text-fiftysix  font-bold text-gray-800 mb-2 ">
               {data.title}
             </h2>
-            <div className="flex items-center space-x-2 text-gray-600 mb-20 "></div>
-            <BsFillPencilFill className="w-4 h-4 sm:w-8 sm:h-8" />
+            <div className="flex items-center space-x-2 text-gray-600 mb-20 ">
+              <BsFillPencilFill className="w-4 h-4 sm:w-8 sm:h-8" />
+            </div>
             {/* Add more icons or actions here as needed */}
           </div>
           <hr />
