@@ -117,9 +117,10 @@ const CheckoutModal = ({
       onClose={onClose}
       onSubmit={onClose}
       body={
-        <div className="flex px-10 ">
-          <div className="border-[1px]flex">
-            <div className="text-seventyeight flex justify-center font-bold">
+        <div className="flex flex-col md:flex-row px-10 overflow-y-auto">
+          {/* Left side */}
+          <div className="md:w-1/2 flex flex-col p-4 order-last md:order-first">
+            <div className="mxs:text-thirtysix mobile:text-fortyeight md:text-sixty lg:text-fortyeight flex justify-center font-bold leading-none">
               <h1>Choose dates</h1>
             </div>
             <ListingReservation
@@ -131,7 +132,7 @@ const CheckoutModal = ({
               disabled={isLoading}
               disabledDates={disabledDates}
             />
-            <div className=" text-3xl font-bold flex justify-center gap-2 mt-8 ">
+            <div className="mxs:text-twenty mobile:text-twentyfour font-bold flex justify-center gap-2 mt-8">
               <p>Choose Payment Method</p>
               <div className="">
                 <AiFillCreditCard size={30} />
@@ -152,22 +153,26 @@ const CheckoutModal = ({
             </div>
           </div>
 
-          <div>
-            <ListingHead
-              title={listing.title}
-              imageSrc={listing.imageSrc}
-              locationValue={listing.locationValue}
-              id={listing.id}
-              currentUser={currentUser}
-            />
-
-            <ListingInfo
-              title={listing.title}
-              user={listing.user}
-              category={category}
-              description={listing.description}
-              locationValue={listing.locationValue}
-            />
+          {/* Right side */}
+          <div className="w-full md:w-1/2 flex flex-col space-y-4 p-4 order-first md:order-last">
+            <div>
+              <ListingHead
+                title={listing.title}
+                imageSrc={listing.imageSrc}
+                locationValue={listing.locationValue}
+                id={listing.id}
+                currentUser={currentUser}
+              />
+              <div className="text-xl">
+                <ListingInfo
+                  title={listing.title}
+                  user={listing.user}
+                  category={category}
+                  description={listing.description}
+                  locationValue={listing.locationValue}
+                />
+              </div>
+            </div>
           </div>
         </div>
       }
@@ -175,3 +180,4 @@ const CheckoutModal = ({
   );
 };
 export default CheckoutModal;
+

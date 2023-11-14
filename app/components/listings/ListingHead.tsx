@@ -27,13 +27,13 @@ const ListingHead = ({ title, locationValue, imageSrc, id, currentUser }: Listin
       <div
         className="
         w-full
-        h-[60vh]
+        h-[30vh]
         overflow-hidden
         rounded-tr-3xl
         rounded-bl-3xl
         relative
-    
-    ">
+        
+        ">
         <Image alt="Image" src={imageSrc} fill className="object-cover" />
         <div className="absolute top-5 right-5">
           <HeartButton listingId={id} currentUser={currentUser} />

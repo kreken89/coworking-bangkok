@@ -22,6 +22,13 @@ import ListingInfo from '@/app/components/listings/ListingInfo';
 //   key: 'selection',
 // };
 
+
+const Map = dynamic(() => import('@/app/components/Map'), {
+  ssr: false,
+});
+
+
+
 interface ListingClientProps {
   reservations?: SafeReservation[];
   listing: SafeListing & {
@@ -134,7 +141,9 @@ const ListingClient = ({
                 description={listing.description}
                 locationValue={listing.locationValue}
               />
-              
+              <div className="md:order-first order-last md:col-span-4">
+                <Map center={coordinates} />
+              </div>
             </div>
             <div
               className="
@@ -143,10 +152,9 @@ const ListingClient = ({
               md:col-span-3
               ">
               <div className=" md:col-span-3">
-                <ListingClientRight 
+                <ListingClientRight
                   currentUser={currentUser}
                   listing={listing}
-                  
                 />
               </div>
             </div>

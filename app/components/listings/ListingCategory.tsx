@@ -25,3 +25,4 @@ const ListingCategory = ({ icon: Icon, label  }: ListingCategoryProps) => {
 }
 
 export default ListingCategory
+

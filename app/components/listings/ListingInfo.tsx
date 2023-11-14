@@ -45,7 +45,7 @@ const ListingInfo = ({ title, user, description, category, locationValue}: Listi
       </div>
 
       <div className="text-lg font-light text-gray mb-20">{description}</div>
-      <Map center={coordinates} />
+      {/* <Map center={coordinates} /> */}
     </div>
   );
 }

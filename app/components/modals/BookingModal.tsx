@@ -82,29 +82,25 @@ const BookingModal = ({
         <div
           className="
             relative
+            flex
+            justify-center
             w-full
-            md:w-4/5
-            lg:w-4/5
-            xl:w-4/5
+            mxs:w-3/6
+            md:w-6/6
+            lg:w-6/6
+            xl:w-6/6
+            2xl:w-6/6
             my-6
-            
-            
-            "
-            
-            >
-          {/*content*/}
-          <div
-            className={`
-            translate
-            duration.300
+            mx-auto
             h-full
-            ${showModal ? 'translate-y-0' : 'translate-y-full'}
-            ${showModal ? 'opacity-100' : 'opacity-0'}
-            `}>
+            lg:h-auto
+            md:h-auto
+            ">
+          {/*content*/}
+          <div>
             <div
               className="
                         translate
-                        h-full
                         lg:h-auto
                         md:h-auto
                         border-0
@@ -116,8 +112,6 @@ const BookingModal = ({
                         flex-col
                         w-full
                         bg-white
-                        outline-none
-                        focus:outline-none
                     ">
               {/*header*/}
               <div
@@ -128,7 +122,6 @@ const BookingModal = ({
                   rounder-t
                   justify-center
                   relative
-                  border-b-[1px]
                   ">
                 <button
                   onClick={handleClose}
@@ -138,20 +131,18 @@ const BookingModal = ({
                     hover:opacity-70
                     transition
                     absolute
-                    right-9
+                    right-12
+                    mt-6
                     ">
                   <IoMdClose size={18} />
                 </button>
-                
               </div>
-              
-              <div className="relative p-6 flex-auto">
-                {body} 
+
+              <div className="relative p-6 flex-auto flex flex-col md:flex-row">
+                {body}
               </div>
               {/*footer*/}
-              <div className="flex flex-col gap-2 p-6">
-                
-              </div>
+              <div className="flex flex-col gap-2 p-6"></div>
             </div>
           </div>
         </div>
