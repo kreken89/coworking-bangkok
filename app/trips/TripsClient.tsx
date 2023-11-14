@@ -39,15 +39,14 @@ const TripsClient = ({ reservations, currentUser }: TripsClientProps) => {
 
   return (
     <Container>
-      <div className="flex text-darkgray sm:text-fortyeight md:text-sixty lg:text-seventyeight mb-10 gap-2">
-        
-          <BiSolidUser />
-        
+      <div className="flex mb-10 gap-2 text-darkgray xs:text-thirtysix sm:text-fiftysix md:text-sixty lg:text-seventyeight">
+        <BiSolidUser className="w-7 h-7 xs:w-10 xs:h-10 sm:w-12 sm:h-12 md:w-20 md:h-20 lg:w-30 lg:h-30 " />
+
         <Heading title="Account" />
       </div>
 
       <div className="bg-darkgray">
-        <div className="ml-5 text-white text-thirtysix p-2 font-bold">
+        <div className="ml-5 text-white p-2 font-bold text-mobile-twentyfour lg:text-thirtysix">
           Bookings
         </div>
       </div>

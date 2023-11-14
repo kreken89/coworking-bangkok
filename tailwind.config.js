@@ -59,10 +59,12 @@ module.exports = {
       fontSize: {
         'custom-small': '0.875rem', // 14px
         'custom-base': '1rem', // 16px
+        'twenty': '20px',
         'twentyfour': '24px',
         'thirtytwo': '32px',
         'thirtysix': '36px',
         'fortyeight': '48px',
+        'fiftysix': '56px',
         'sixty': '60px',
         'seventyeight': '78px', // 78px
         'hundredeighty': '180px', // 180px
