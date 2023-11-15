@@ -176,11 +176,13 @@ const CheckoutModal = ({
                 />
                 <Email />
               </div>
-              <ReservationButton
-                totalPrice={totalPrice}
-                disabled={isLoading}
-                onSubmit={onCreateReservation}
-              />
+              <div className="order-first sm:order-last md:order-last">
+                <ReservationButton
+                  totalPrice={totalPrice}
+                  disabled={isLoading}
+                  onSubmit={onCreateReservation}
+                />
+              </div>
             </div>
           </div>
         </div>
