@@ -50,7 +50,7 @@ const RentModal = () => {
         guestCount: 1,
         roomCount: 1,
         bathroomCount: 1,
-        imageSrc: '', //Ändra till array
+        imageSrc: [], //Ändra till array
         price: 1,
         title: '',
         description: '',
@@ -92,7 +92,7 @@ const RentModal = () => {
 
       setIsLoading(true);
 
-      axios.post('/api/listings', data)
+      axios.post('/api/listings', { ...data, imageSrc })
       .then(() => {
         toast.success('Listing Created!');
         router.refresh();

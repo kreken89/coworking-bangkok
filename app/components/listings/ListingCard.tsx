@@ -85,23 +85,23 @@ const ListingCard = ({
         h-full
         "
         style={{
-          height: '656px',
+          height: '500px',
         }}>
         <div
           className="
             h-full
             relative   
             ">
-          <Image
-            fill
-            src={data.imageSrc}
-            alt="Listing"
-            className="
-            object-cover
-            transition
-            group-hover:scale-110   
-            "
-          />
+          {data.imageSrc.map((imageUrl, index) => (
+            <Image
+              key={index}
+              fill
+              src={imageUrl}
+              alt={`Listing Image ${index + 1}`}
+              className="object-cover transition group-hover:scale-110"
+            />
+          ))}
+
           <div className="absolute top-2 right-2">
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>

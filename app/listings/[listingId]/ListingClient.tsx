@@ -1,27 +1,15 @@
 'use client';
-import { Range } from 'react-date-range';
-import { toast } from 'react-hot-toast';
-import axios from 'axios';
-import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns';
-import { useRouter } from 'next/navigation';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+
+import { useMemo } from 'react';
 import { SafeListing, SafeReservation, SafeUser } from '@/app/types';
 import { categories } from '@/app/components/navbar/Categories';
 import Container from '@/app/components/Container';
 import ListingHead from '@/app/components/listings/ListingHead';
-import ListingReservation from '@/app/components/listings/ListingReservation';
-import useLoginModal from '@/app/hooks/useLoginModal';
+
 import dynamic from 'next/dynamic';
 import useCountries from '@/app/hooks/useCountries';
 import ListingClientRight from './ListingClientRight';
 import ListingInfo from '@/app/components/listings/ListingInfo';
-
-// const initialDateRange = {
-//   startDate: new Date(),
-//   endDate: new Date(),
-//   key: 'selection',
-// };
-
 
 const Map = dynamic(() => import('@/app/components/Map'), {
   ssr: false,
@@ -48,67 +36,6 @@ const ListingClient = ({
   const { getByValue } = useCountries();
 
   const coordinates = getByValue(locationValue)?.latlng;
-
-  // const loginModal = useLoginModal();
-  // const router = useRouter();
-  // const location = getByValue(locationValue);
-  
-  // const disabledDates = useMemo(() => {
-  //   let dates: Date[] = [];
-  //   reservations.forEach((reservation) => {
-  //     const range = eachDayOfInterval({
-  //       start: new Date(reservation.startDate),
-  //       end: new Date(reservation.endDate),
-  //     });
-  //     dates = [...dates, ...range];
-  //   });
-  //   return dates;
-  // }, [reservations]);
-
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [totalPrice, setTotalPrice] = useState(listing.price);
-  // const [dateRange, setDateRange] = useState<Range>(initialDateRange);
-
-
-
-  // const onCreateReservation = useCallback(() => {
-  //   if (!currentUser) {
-  //     return loginModal.onOpen();
-  //   }
-  //   setIsLoading(true);
-  //   axios
-  //     .post('/api/reservations', {
-  //       totalPrice,
-  //       startDate: dateRange.startDate,
-  //       endDate: dateRange.endDate,
-  //       listingId: listing.id,
-  //     })
-  //     .then(() => {
-  //       toast.success('Reservation created successfully');
-  //       setDateRange(initialDateRange);
-  //       //redirect to accounts
-  //       router.push('/trips');
-  //     })
-  //     .catch(() => {
-  //       toast.error('Reservation failed');
-  //     });
-  // }, [totalPrice, dateRange, listing?.id, router, loginModal, currentUser]);
-  
-
-
-  // useEffect(() => {
-  //   if (dateRange.startDate && dateRange.endDate) {
-  //     const dayCount = differenceInCalendarDays(
-  //       dateRange.endDate,
-  //       dateRange.startDate
-  //     );
-  //     if (dayCount && listing.price) {
-  //       setTotalPrice(dayCount * listing.price);
-  //     } else {
-  //       setTotalPrice(listing.price);
-  //     }
-  //   }
-  // }, [dateRange, listing.price]);
 
   const category = useMemo(() => {
     return categories.find((item) => item.label === listing.category);

@@ -54,16 +54,6 @@ const TripsClient = ({ reservations, currentUser }: TripsClientProps) => {
       <div className="flex flex-col gap-8">
         {reservations.map((reservation) => (
           <AccountCard data={reservation.listing} reservation={reservation} />
-          // <ListingCard
-          //     key={reservation.id}
-          //     data={reservation.listing}
-          //     reservation={reservation}
-          //     actionId={reservation.id}
-          //     onAction={onCancel}
-          //     disabled={deletingId === reservation.id}
-          //     actionLabel="Cancel reservation"
-          //     currentUser={currentUser}
-          // />
         ))}
       </div>
     </Container>

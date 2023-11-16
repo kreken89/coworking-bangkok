@@ -71,29 +71,29 @@ const AccountCard = ({
   return (
     <div
       onClick={() => router.push(`/listings/${data.id}`)}
-      className="flex bg-white sm:p-6 md:p-6 lg:p-6 mobile:p-2 rounded-lg custom-shadow cursor-pointer hover:custom-shadow transition-shadow">
+      className="flex bg-white sm:p-6 md:p-6 lg:p-6 mobile:p-2 rounded-lg custom-shadow cursor-pointer transition-shadow">
       <div
         className="
-      aspect-square
-      relative
-      overflow-hidden
-      rounded-tr-3xl
-      rounded-bl-3xl
-      mr-4
-      w-1/3
-      
-    ">
+          aspect-square
+          relative
+          overflow-hidden
+          rounded-tr-3xl
+          rounded-bl-3xl
+          w-1/5
+          mr-4
+        ">
+
         <Image
           fill
           alt="Listing"
-          src={data.imageSrc}
+          src={data.imageSrc[0]}
           className="
-        object-cover
-        h-full
-        w-full
-        group-hover:scale-105
-        transition
-      "
+          object-cover
+          h-full
+          w-full
+          group-hover:scale-105
+          transition
+        "
         />
       </div>
 
