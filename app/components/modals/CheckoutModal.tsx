@@ -120,21 +120,24 @@ const CheckoutModal = ({
       onClose={onClose}
       onSubmit={onClose}
       body={
-        <div className="flex flex-col md:flex-row px-10 overflow-y-auto">
+        <div className="flex flex-col md:flex-row overflow-y-auto">
           {/* Left side */}
-          <div className="md:w-1/2 flex justify-between flex-col p-4 order-last md:order-first">
-            <div className="mxs:text-thirtysix mobile:text-fortyeight lg:text-fortyeight flex justify-center font-bold leading-none">
-              <h1 className="text-darkgray">Choose dates</h1>
+          <div className="md:w-1/2 flex justify-between flex-col order-last md:order-first">
+            <div>
+              <div className="mxs:text-thirtysix mobile:text-fortyeight lg:text-fortyeight flex justify-center font-bold leading-none">
+                <h1 className="text-darkgray mb-10">Choose dates</h1>
+              </div>
+              <ListingReservation
+                price={listing.price} // Replace with actual price per night
+                dateRange={dateRange}
+                totalPrice={totalPrice}
+                onChangeDate={(value) => setDateRange(value)}
+                onSubmit={onCreateReservation}
+                disabled={isLoading}
+                disabledDates={disabledDates}
+              />
             </div>
-            <ListingReservation
-              price={listing.price} // Replace with actual price per night
-              dateRange={dateRange}
-              totalPrice={totalPrice}
-              onChangeDate={(value) => setDateRange(value)}
-              onSubmit={onCreateReservation}
-              disabled={isLoading}
-              disabledDates={disabledDates}
-            />
+
             <div>
               <div className=" text-darkgray mxs:text-twenty mobile:text-twentyfour font-bold flex justify-center gap-2 mt-8">
                 <p>Choose Payment Method</p>
@@ -158,23 +161,26 @@ const CheckoutModal = ({
           </div>
 
           {/* Right side */}
-          <div className="w-full md:w-1/2 flex flex-col space-y-4 p-4 order-first md:order-last">
+          <div className="w-full md:w-1/2 flex flex-col space-y-4 px-4 order-first md:order-last">
             <div>
-              <ListingHead
-                title={listing.title}
-                imageSrc={listing.imageSrc}
-                locationValue={listing.locationValue}
-                id={listing.id}
-                currentUser={currentUser}
-              />
-              <div className="text-xl">
-                <ListingInfo
+              <div>
+                <ListingHead
                   title={listing.title}
-                  user={listing.user}
-                  category={category}
+                  imageSrc={[listing.imageSrc[0]]}
                   locationValue={listing.locationValue}
+                  id={listing.id}
+                  currentUser={currentUser}
+                  
                 />
-                <Email />
+                <div className="text-xl">
+                  <ListingInfo
+                    title={listing.title}
+                    user={listing.user}
+                    category={category}
+                    locationValue={listing.locationValue}
+                  />
+                  <Email />
+                </div>
               </div>
               <div className="order-first sm:order-last md:order-last">
                 <ReservationButton

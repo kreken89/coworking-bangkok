@@ -33,14 +33,14 @@ const ReservationButton = ({ totalPrice, disabled, onSubmit }: ReservationButton
         flex-row
         items-center 
         justify-between
-        p-4
+        py-2
         font-semibold
         text-lg
       ">
         <div>Total</div>
         <div>$ {totalPrice}</div>
       </div>
-      <div className="p-4">
+      <div className="">
         <Button
           disabled={disabled}
           label="Book now"

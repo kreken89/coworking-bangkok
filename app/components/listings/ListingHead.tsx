@@ -16,7 +16,7 @@ interface ListingHeadProps {
     currentUser?: SafeUser | null;
 }
 
-const ListingHead = ({ title, locationValue, imageSrc = [], id, currentUser }: ListingHeadProps) => {
+const ListingHead = ({ title, locationValue, imageSrc = [], id, currentUser  }: ListingHeadProps) => {
 
     const { getByValue } = useCountries();
 
@@ -25,7 +25,7 @@ const ListingHead = ({ title, locationValue, imageSrc = [], id, currentUser }: L
   return (
     <>
       <div className="w-full flex flex-col md:flex-row justify-center gap-x-1 overflow-hidden rounded-bl-3xl rounded-tr-3xl custom-listing-border-radius">
-        <div className="w-full h-[40vh] md:w-[70vw] md:h-[40vh] mb-1 overflow-hidden relative">
+        <div className=" w-full h-[30vh] md:h-[30vh] mb-1 overflow-hidden relative">
           <div className="flex">
             <Image
               alt="Property Image"
@@ -44,7 +44,7 @@ const ListingHead = ({ title, locationValue, imageSrc = [], id, currentUser }: L
             {imageSrc.slice(1, 3).map((image, index) => (
               <div
                 key={index}
-                className="md:w-[15vw] w-[23vw] md:h-[19.8vh] h-[15vh] overflow-hidden relative ">
+                className="md:w-[15vw] w-[23vw] md:h-[15vh] h-[15vh] overflow-hidden relative ">
                 <Image
                   alt={`Image ${index}`}
                   src={image}
@@ -58,7 +58,7 @@ const ListingHead = ({ title, locationValue, imageSrc = [], id, currentUser }: L
             {imageSrc.slice(3, 5).map((image, index) => (
               <div
                 key={index}
-                className="md:w-[15vw] w-[24vw] md:h-[19.9vh] h-[15vh] overflow-hidden relative">
+                className="md:w-[15vw] w-[24vw] md:h-[15vh] h-[15vh] overflow-hidden relative">
                 <Image
                   alt={`Image ${index}`}
                   src={image}

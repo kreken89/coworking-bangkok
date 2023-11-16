@@ -119,7 +119,7 @@ const BookingModal = ({
                 className="
                   flex
                   items-center
-                  p-6
+                  pt-4
                   rounder-t
                   justify-center
                   relative
@@ -134,6 +134,7 @@ const BookingModal = ({
                     absolute
                     right-12
                     mt-6
+                    z-50
                     ">
                   <IoMdClose size={18} />
                 </button>
@@ -142,8 +143,7 @@ const BookingModal = ({
               <div className="relative p-6 flex-auto flex flex-col md:flex-row">
                 {body}
               </div>
-              {/*footer*/}
-              <div className="flex flex-col gap-2 p-6"></div>
+
             </div>
           </div>
         </div>
