@@ -8,6 +8,7 @@ import ListingCategory from "./ListingCategory";
 import dynamic from "next/dynamic";
 import Heading from "../Heading";
 import { IoLocationOutline } from "react-icons/io5";
+import { FaRegEnvelope } from "react-icons/fa";
 
 const Map = dynamic(() => import('../Map'), {
     ssr: false,
@@ -31,12 +32,19 @@ const ListingInfo = ({ title, user, description, category, locationValue }: List
         const location = getByValue(locationValue);
 
   return (
-    <div className=" col-span-4 flex flex-col gap-8">
+    <div className=" col-span-4 flex flex-col gap-2">
       <Heading
         title={title}
         icon={<IoLocationOutline size={16} className="text-semilightgray" />}
         subtitle={`${location?.region}, ${location?.label}`}
       />
+      
+      <div className="flex gap-2 mb-4">
+        <FaRegEnvelope size={16} className="mt-1 text-lightgray" />
+        <span className="flex text-custombase text-lightgray">
+          bookings@coworkingbangkok.com
+        </span>
+      </div>
 
       <div className="border-[1px] w-[fit-content] rounded-tr-lg rounded-bl-lg p-1">
         {category && (

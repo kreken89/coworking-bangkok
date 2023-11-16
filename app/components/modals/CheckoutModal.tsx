@@ -179,7 +179,6 @@ const CheckoutModal = ({
                     category={category}
                     locationValue={listing.locationValue}
                   />
-                  <Email />
                 </div>
               </div>
               <div className="order-first sm:order-last md:order-last">
