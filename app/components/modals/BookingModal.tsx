@@ -100,7 +100,7 @@ const BookingModal = ({
                         flex-col
                         w-full
                         bg-white
-                        border-2
+                        
                     ">
               {/*header*/}
               <div
