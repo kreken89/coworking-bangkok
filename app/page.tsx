@@ -27,7 +27,7 @@ const Home = async ({ searchParams}: HomeProps) => {
       <HomeBackground />
       <SmallHero />
       <Container>
-        <div className="py-6 md:pt-20 md:pb-4 ">
+        <div className="">
           <ArraySlicer
             listings={listings.slice(0, 4)}
             currentUser={currentUser}
@@ -38,7 +38,7 @@ const Home = async ({ searchParams}: HomeProps) => {
       <TukTukBanner />
 
       <Container>
-        <div className="py-6 md:pt-20 md:pb-4">
+        <div className="">
           <ArraySlicer
             listings={listings.slice(4, 8)}
             currentUser={currentUser}
@@ -49,7 +49,7 @@ const Home = async ({ searchParams}: HomeProps) => {
       <CoffeeBanner />
 
       <Container>
-        <div className="py-6 md:pt-20 md:pb-4">
+        <div className="py-6 md:pb-4 ">
           <ArraySlicer
             listings={listings.slice(8, 12)}
             currentUser={currentUser}
@@ -57,7 +57,7 @@ const Home = async ({ searchParams}: HomeProps) => {
         </div>
       </Container>
       <Container>
-        <div className="py-6 md:pt-20 md:pb-4">
+        <div className="py-6 md:pb-4">
           <ArraySlicer
             listings={listings.slice(12, 16)}
             currentUser={currentUser}
@@ -70,27 +70,3 @@ const Home = async ({ searchParams}: HomeProps) => {
 
 export default Home;
 
-{
-  /* <div
-            className="
-            pt-2
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            md:grid-cols-3
-            max-w-4xl
-            mx-auto
-            gap-8
-            
-            ">
-            {listings.map((listing) => {
-              return (
-                <ListingCard
-                currentUser={currentUser}
-                key={listing.id}
-                data={listing}
-                />
-                );
-              })}
-          </div> */
-}
