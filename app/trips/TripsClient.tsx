@@ -53,7 +53,11 @@ const TripsClient = ({ reservations, currentUser }: TripsClientProps) => {
 
       <div className="flex flex-col gap-8">
         {reservations.map((reservation) => (
-          <AccountCard data={reservation.listing} reservation={reservation} />
+          <AccountCard
+            data={reservation.listing}
+            key={reservation.id}
+            reservation={reservation}
+          />
         ))}
       </div>
     </Container>

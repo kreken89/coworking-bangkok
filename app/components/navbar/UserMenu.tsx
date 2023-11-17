@@ -168,17 +168,17 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
                 />
                 <MenuItem
                   onClick={() => handleCloseOnClick('/favorites')}
-                  label="My favorites"
+                  label="My Favorites"
                 />
                 <MenuItem
                   onClick={() => handleCloseOnClick('/reservations')}
-                  label="My reservations"
+                  label="My Reservations"
                 />
                 <MenuItem
                   onClick={() => handleCloseOnClick('/properties')}
                   label="My Properties"
                 />
-                <MenuItem onClick={rentModal.onOpen} label="Add listing" />
+                <MenuItem onClick={rentModal.onOpen} label="Add Office" />
                 {/* <MenuItem onClick={() => signOut()} label="Logout" /> */}
                 {/* <MenuItem onClick={() => {}} label="Account" /> */}
               </>

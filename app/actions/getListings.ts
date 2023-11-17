@@ -8,7 +8,7 @@ export interface IListingsParams {
     startDate?: string;
     endDate?: string;
     locationValue?: string;
-    category?: string;
+    category?: string[];
 }
 
 
@@ -34,8 +34,10 @@ export default async function getListings(
             query.userId = userId;
         }
 
-        if (category) {
-            query.category = category;
+        if (category && category.length > 0) {
+            query.category = {
+            in: category,
+            };
         }
 
         if (roomCount) {

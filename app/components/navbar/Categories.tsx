@@ -10,13 +10,9 @@ import { FaMedal } from 'react-icons/fa';
 import { TbToolsKitchen2 } from 'react-icons/tb';
 import { CgCoffee } from 'react-icons/cg';
 import { CgGym } from 'react-icons/cg';
+import { BiSolidDrink } from 'react-icons/bi';
 
 export const categories = [
-  {
-    label: 'SAFETYBOX',
-    icon: GrLock,
-    // description: 'This property has safteyboxes!',
-  },
   {
     label: 'ACTIVITIES',
     icon: FaMedal,
@@ -36,6 +32,16 @@ export const categories = [
     label: 'GYM',
     icon: CgGym,
     // description: 'This property has a gym!',
+  },
+  {
+    label: 'SAFETYBOX',
+    icon: GrLock,
+    // description: 'This property has safteyboxes!',
+  },
+  {
+    label: 'AFTERWORK',
+    icon: BiSolidDrink,
+    // description: 'This property has safteyboxes!',
   },
 ];
 
