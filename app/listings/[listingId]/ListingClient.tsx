@@ -89,7 +89,9 @@ const ListingClient = ({
                 
               {/* Right side */}
               <div className=" md:col-span-3">
-                <Pricing />
+                <Pricing 
+                  data={listing}
+                />
                 <Button label="Book now!" onClick={onOpen} />
                 {isOpen && (
                   <CheckoutModal listing={listing} currentUser={currentUser} />

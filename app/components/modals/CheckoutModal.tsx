@@ -1,28 +1,25 @@
-
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
-import useCheckoutModal from "@/app/hooks/useCheckoutModal";
-import ListingReservation from "../listings/ListingReservation";
-import { differenceInCalendarDays } from "date-fns";
-import { Range } from "react-date-range";
-import { SafeListing, SafeUser } from "@/app/types";
-import BookingModal from "./BookingModal";
-import { FaCcMastercard, FaCcPaypal, FaCcVisa } from "react-icons/fa";
-import { AiFillCreditCard } from "react-icons/ai";
-import axios from "axios";
-import toast from "react-hot-toast";
-import useLoginModal from "@/app/hooks/useLoginModal";
-import ListingHead from "../listings/ListingHead";
-import ListingInfo from "../listings/ListingInfo";
-import { categories } from "../navbar/Categories";
-import ReservationButton from "../ReservationButton";
-
-
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import useCheckoutModal from '@/app/hooks/useCheckoutModal';
+import ListingReservation from '../listings/ListingReservation';
+import { differenceInCalendarDays } from 'date-fns';
+import { Range } from 'react-date-range';
+import { SafeListing, SafeUser } from '@/app/types';
+import BookingModal from './BookingModal';
+import { FaCcMastercard, FaCcPaypal, FaCcVisa } from 'react-icons/fa';
+import { AiFillCreditCard } from 'react-icons/ai';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import useLoginModal from '@/app/hooks/useLoginModal';
+import ListingHead from '../listings/ListingHead';
+import ListingInfo from '../listings/ListingInfo';
+import { categories } from '../navbar/Categories';
+import ReservationButton from '../ReservationButton';
 
 const initialDateRange = {
   startDate: new Date(),
   endDate: new Date(),
-  key: "selection",
+  key: 'selection',
 };
 
 interface CheckoutModalProps {
@@ -33,13 +30,9 @@ interface CheckoutModalProps {
   price?: number;
 }
 
-const CheckoutModal = ({
-  listing,
-  currentUser,
-}: CheckoutModalProps) => {
-
+const CheckoutModal = ({ listing, currentUser }: CheckoutModalProps) => {
   const { isOpen, onClose } = useCheckoutModal();
-  
+
   // const modalRef = useRef(null);
   const router = useRouter();
   const loginModal = useLoginModal();
@@ -47,12 +40,15 @@ const CheckoutModal = ({
   const [dateRange, setDateRange] = useState<Range>({
     startDate: new Date(),
     endDate: new Date(),
-    key: "selection",
+    key: 'selection',
   });
 
   const [totalPrice, setTotalPrice] = useState(100); // Example base price
   const [disabledDates, setDisabledDates] = useState([]); // You would get this from props or context
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
+    string | null
+  >(null);
 
   const onCreateReservation = useCallback(() => {
     if (!currentUser) {
@@ -62,7 +58,7 @@ const CheckoutModal = ({
     setIsLoading(true);
 
     axios
-      .post("/api/reservations", {
+      .post('/api/reservations', {
         totalPrice,
         startDate: dateRange.startDate,
         endDate: dateRange.endDate,
@@ -70,15 +66,15 @@ const CheckoutModal = ({
       })
 
       .then(() => {
-        toast.success("Reservation created successfully");
+        toast.success('Reservation created successfully');
         setDateRange(initialDateRange);
         //redirect to accounts
-        router.push("/trips");
+        router.push('/trips');
         onClose();
       })
 
       .catch(() => {
-        toast.error("Reservation failed");
+        toast.error('Reservation failed');
       });
   }, [totalPrice, dateRange, listing?.id, router, loginModal, currentUser]);
 
@@ -89,14 +85,28 @@ const CheckoutModal = ({
         dateRange.endDate,
         dateRange.startDate
       );
-      if (dayCount && listing.price) {
-        setTotalPrice(dayCount * listing.price);
-      } else {
-        setTotalPrice(listing.price);
+
+      let discountPercentage = 0;
+
+      // Apply discount based on the number of days
+      if (dayCount >= 7 && dayCount < 28) {
+        discountPercentage = 10;
+      } else if (dayCount >= 28) {
+        discountPercentage = 25;
       }
+
+      // Calculate the total price with the discount
+      let discountedPrice = listing.price;
+
+      if (dayCount && listing.price) {
+        discountedPrice = dayCount * listing.price;
+        discountedPrice = discountedPrice * ((100 - discountPercentage) / 100);
+      }
+
+      setTotalPrice(discountedPrice);
     }
   }, [dateRange, listing.price]);
-  
+
   // Handle reservation submission
   const handleReservationSubmit = () => {
     setIsLoading(true);
@@ -110,13 +120,9 @@ const CheckoutModal = ({
     // Optionally reset state
   };
 
-  // const category = useMemo(() => {
-  //   return categories.find((item) => listing.category.includes(item.label));
-  // }, [listing.category]);
-
-   const categoriesForListing = useMemo(() => {
-     return categories.filter((item) => listing.category.includes(item.label));
-   }, [listing.category]);
+  const categoriesForListing = useMemo(() => {
+    return categories.filter((item) => listing.category.includes(item.label));
+  }, [listing.category]);
 
   return (
     <BookingModal
@@ -124,7 +130,7 @@ const CheckoutModal = ({
       onClose={onClose}
       onSubmit={onClose}
       body={
-        <div className="flex flex-col md:flex-row overflow-y-auto">
+        <div className="flex flex-col gap-4 md:flex-row overflow-y-auto">
           {/* Left side */}
           <div className="md:w-1/2 flex justify-between flex-col order-last md:order-first">
             <div>
@@ -148,16 +154,41 @@ const CheckoutModal = ({
                 <AiFillCreditCard size={30} />
               </div>
 
-              <div className="flex gap-24 justify-center mt-2">
-                <div className="widerIcon">
-                  <FaCcPaypal size={50} style={{ color: '#FFC703' }} />
+              <div className="flex gap-24 justify-center mt-2 cursor-pointer">
+                <div
+                  className={`widerIcon ${
+                    selectedPaymentMethod === 'paypal' &&
+                    'border-2 border-greenBtn px-1 rounded-md'
+                  }`}>
+                  <FaCcPaypal
+                    size={50}
+                    className={`text-paypalyellow`}
+                    onClick={() =>
+                      setSelectedPaymentMethod(
+                        selectedPaymentMethod === 'paypal' ? null : 'paypal'
+                      )
+                    }
+                  />
                 </div>
-                <div className="flex widerIcon">
-                  <div>
-                    <FaCcVisa size={50} style={{ color: '#375BDB' }} />
-                  </div>
-                  <div>
-                    <FaCcMastercard size={50} style={{ color: '#D34121' }} />
+
+                <div
+                  className={`flex widerIcon ${
+                    selectedPaymentMethod === 'visa-mastercard' &&
+                    'border-2 border-greenBtn px-1 rounded-md'
+                  } cursor-pointer`}
+                  onClick={() =>
+                    setSelectedPaymentMethod(
+                      selectedPaymentMethod === 'visa-mastercard'
+                        ? null
+                        : 'visa-mastercard'
+                    )
+                  }>
+                  <div className="flex ">
+                    <FaCcVisa size={50} className={`text-visablue`} />
+                    <FaCcMastercard
+                      size={50}
+                      className={`text-mastercardred`}
+                    />
                   </div>
                 </div>
               </div>
@@ -165,29 +196,29 @@ const CheckoutModal = ({
           </div>
 
           {/* Right side */}
-          <div className="w-full md:w-1/2 flex flex-col space-y-4 px-4 order-first md:order-last">
+          <div className="w-full md:w-1/2 flex flex-col px-4 order-first md:order-last">
             <div>
-              <div>
-                <ListingHead
-                  title={listing.title}
-                  imageSrc={[listing.imageSrc[0]]}
-                  locationValue={listing.locationValue}
-                  id={listing.id}
-                  currentUser={currentUser}
-                />
-                <div className="text-xl">
-                  <ListingInfo
-                    title={listing.title}
-                    user={listing.user}
-                    categories={categoriesForListing}
-                    locationValue={listing.locationValue}
-                  />
-                </div>
-              </div>
+              <ListingHead
+                
+                imageSrc={[listing.imageSrc[0]]}
+                locationValue={listing.locationValue}
+                id={listing.id}
+                currentUser={currentUser}
+              />
+            </div>
+
+            <div className='flex flex-col justify-between'>
+              <ListingInfo
+                title={listing.title}
+                user={listing.user}
+                categories={categoriesForListing}
+                locationValue={listing.locationValue}
+              />
+
               <div className="order-first sm:order-last md:order-last">
                 <ReservationButton
                   totalPrice={totalPrice}
-                  disabled={isLoading}
+                  disabled={!selectedPaymentMethod || isLoading}
                   onSubmit={onCreateReservation}
                 />
               </div>
@@ -199,4 +230,3 @@ const CheckoutModal = ({
   );
 };
 export default CheckoutModal;
-

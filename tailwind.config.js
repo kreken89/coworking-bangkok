@@ -27,8 +27,11 @@ module.exports = {
         'white': '#FFFFFF',
         'turquoise': '#27B2BB',
         'yellow': '#FBBD02',
+        'paypalyellow': '#FFC703',
+        'mastercardred': '#D34121',
+        'visablue': '#375BDB',
         'greenBtn': '#28A745',
-        'red': 'A72828',
+        'red': '#A72828',
         'coffeecircle': '#F5EEE8',
         // You can add more custom colors here if needed
       },

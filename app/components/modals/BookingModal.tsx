@@ -68,7 +68,6 @@ const BookingModal = ({
       <div
         className="
         justify-center
-        
         flex
         overflow-x-hidden
         overflow-y-auto
@@ -81,21 +80,10 @@ const BookingModal = ({
     ">
         <div
           className="
-            relative
             flex
             justify-center
-
-            w-full
-            mxs:w-3/6
-            md:w-6/6
-            lg:w-6/6
-            xl:w-6/6
-            2xl:w-6/6
-            my-6
-            mx-auto
-            h-full
-            lg:h-auto
-            md:h-auto
+            md:items-center
+            sm:items-start
             ">
           {/*content*/}
           <div>
@@ -104,7 +92,6 @@ const BookingModal = ({
                         translate
                         lg:h-auto
                         md:h-auto
-                        border-0
                         rounded-tr-2xl
                         rounded-bl-2xl
                         shadow-lg
@@ -113,6 +100,7 @@ const BookingModal = ({
                         flex-col
                         w-full
                         bg-white
+                        border-2
                     ">
               {/*header*/}
               <div
@@ -143,7 +131,6 @@ const BookingModal = ({
               <div className="relative p-6 flex-auto flex flex-col md:flex-row">
                 {body}
               </div>
-
             </div>
           </div>
         </div>

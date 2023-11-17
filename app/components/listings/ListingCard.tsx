@@ -144,7 +144,7 @@ const ListingCard = ({
             </div>
 
             <div className="flex flex-row items-center gap-1 bg-white p-1 rounded-tr-2xl rounded-bl-2xl w-1/2 justify-center ml-auto">
-              <div className="font-poppins font-bold">${price}</div>
+              <div className="font-poppins font-bold">{price} THB</div>
               {!reservation && (
                 <div className="font-poppins font-bold">/Week</div>
               )}

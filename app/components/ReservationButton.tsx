@@ -38,7 +38,7 @@ const ReservationButton = ({ totalPrice, disabled, onSubmit }: ReservationButton
         text-lg
       ">
         <div>Total</div>
-        <div>$ {totalPrice}</div>
+        <div>{totalPrice} THB</div>
       </div>
       <div className="">
         <Button
