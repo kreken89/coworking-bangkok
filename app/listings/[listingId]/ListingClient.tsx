@@ -8,14 +8,17 @@ import ListingHead from '@/app/components/listings/ListingHead';
 
 import dynamic from 'next/dynamic';
 import useCountries from '@/app/hooks/useCountries';
-import ListingClientRight from './ListingClientRight';
 import ListingInfo from '@/app/components/listings/ListingInfo';
+import Pricing from '@/app/components/Pricing';
+import Button from '@/app/components/Button';
+import CheckoutModal from '@/app/components/modals/CheckoutModal';
+import ConfirmationModal from '@/app/components/modals/ConfirmationModal';
+import Ratings from '@/app/components/Ratings';
+import useCheckoutModal from '@/app/hooks/useCheckoutModal';
 
 const Map = dynamic(() => import('@/app/components/Map'), {
   ssr: false,
 });
-
-
 
 interface ListingClientProps {
   reservations?: SafeReservation[];
@@ -34,16 +37,21 @@ const ListingClient = ({
 }: ListingClientProps) => {
 
   const { getByValue } = useCountries();
-
+  const { isOpen, onOpen } = useCheckoutModal();
   const coordinates = getByValue(locationValue)?.latlng;
 
-  const category = useMemo(() => {
-    return categories.find((item) => item.label === listing.category);
+  // const category = useMemo(() => {
+  //   return categories.find((item) => item.label === listing.category);
+  // }, [listing.category]);
+
+  const categoriesForListing = useMemo(() => {
+    return categories.filter((item) => listing.category.includes(item.label));
   }, [listing.category]);
 
   
   return (
     <Container>
+      {/* Left Side */}
       <div className="max-w-screen-4XL mx-auto">
         <div className="flex flex-col gap-12">
           <ListingHead
@@ -64,7 +72,7 @@ const ListingClient = ({
               <ListingInfo
                 title={listing.title}
                 user={listing.user}
-                category={category}
+                categories={categoriesForListing}
                 description={listing.description}
                 locationValue={listing.locationValue}
               />
@@ -78,11 +86,16 @@ const ListingClient = ({
               md:order-last
               md:col-span-3
               ">
+                
+              {/* Right side */}
               <div className=" md:col-span-3">
-                <ListingClientRight
-                  currentUser={currentUser}
-                  listing={listing}
-                />
+                <Pricing />
+                <Button label="Book now!" onClick={onOpen} />
+                {isOpen && (
+                  <CheckoutModal listing={listing} currentUser={currentUser} />
+                )}
+                {isOpen && <ConfirmationModal />}
+                <Ratings />
               </div>
             </div>
           </div>

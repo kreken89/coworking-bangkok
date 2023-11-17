@@ -16,7 +16,7 @@ interface ListingHeadProps {
     currentUser?: SafeUser | null;
 }
 
-const ListingHead = ({ title, locationValue, imageSrc = [], id, currentUser  }: ListingHeadProps) => {
+const ListingHead = ({ title, locationValue, imageSrc, id, currentUser  }: ListingHeadProps) => {
 
     const { getByValue } = useCountries();
 

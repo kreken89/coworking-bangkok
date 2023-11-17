@@ -63,6 +63,7 @@ const ListingInfo = ({
             </div>
           ))}
       </div>
+      
 
       <div className="text-lg font-light text-gray">{description}</div>
     </div>
@@ -70,17 +71,3 @@ const ListingInfo = ({
 };
 
 export default ListingInfo
-
-
-
-      // <div className="border-[1px] w-[fit-content] rounded-tr-lg rounded-bl-lg p-1">
-      //   {categories &&
-      //     categories.length > 0 &&
-      //     categories.map((category, index) => (
-      //       <ListingCategory
-      //         key={index}
-      //         icon={category.icon}
-      //         label={category.label}
-      //       />
-      //     ))}
-      // </div>
