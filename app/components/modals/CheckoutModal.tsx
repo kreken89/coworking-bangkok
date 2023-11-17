@@ -16,7 +16,7 @@ import ListingHead from "../listings/ListingHead";
 import ListingInfo from "../listings/ListingInfo";
 import { categories } from "../navbar/Categories";
 import ReservationButton from "../ReservationButton";
-import Email from "../Email";
+
 
 
 const initialDateRange = {
@@ -110,9 +110,13 @@ const CheckoutModal = ({
     // Optionally reset state
   };
 
-  const category = useMemo(() => {
-    return categories.find((item) => listing.category.includes(item.label));
-  }, [listing.category]);
+  // const category = useMemo(() => {
+  //   return categories.find((item) => listing.category.includes(item.label));
+  // }, [listing.category]);
+
+   const categoriesForListing = useMemo(() => {
+     return categories.filter((item) => listing.category.includes(item.label));
+   }, [listing.category]);
 
   return (
     <BookingModal
@@ -170,13 +174,12 @@ const CheckoutModal = ({
                   locationValue={listing.locationValue}
                   id={listing.id}
                   currentUser={currentUser}
-                  
                 />
                 <div className="text-xl">
                   <ListingInfo
                     title={listing.title}
                     user={listing.user}
-                    category={category}
+                    categories={categoriesForListing}
                     locationValue={listing.locationValue}
                   />
                 </div>
