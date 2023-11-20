@@ -10,7 +10,7 @@ module.exports = {
     fontFamily: {
       'poppins': ['Poppins', 'sans-serif'], // Make sure the key for the fontFamily is lowercase "sans"
       'sans': ['sans-serif'], // Make sure the key for the fontFamily is lowercase "sans"
-      'rajhadi': ['rajhadi'], // Make sure the key for the fontFamily is lowercase "sans"
+      'rajdhani': ['Rajdhani', 'sans-serif'], // Make sure the key for the fontFamily is lowercase "sans"
       'work': ['work-sans', 'system-ui', 'work-sans'], // Make sure the key for the fontFamily is lowercase "sans"
     },
     extend: {
@@ -64,6 +64,7 @@ module.exports = {
         'custom-base': '1rem', // 16px
         'twenty': '20px',
         'twentyfour': '24px',
+        'twentyeight': '28px',
         'thirtytwo': '32px',
         'thirtysix': '36px',
         'fortyeight': '48px',

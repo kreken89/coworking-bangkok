@@ -12,7 +12,7 @@ interface HeadingProps {
 const Heading = ({ title, subtitle, center, icon }: HeadingProps) => {
   return (
     <div className={center ? 'text-center' : 'text-start'}>
-      <div className="text-3xl leading-none sm:text-thirtytwo md:text-thirtysix font-bold font-poppins text-darkgray lg:text-fortyeight">
+      <div className="text-fortyeight leading-none sm:text-thirtytwo md:text-thirtysix font-bold font-poppins text-darkgray lg:text-fortyeight">
         {title}
       </div>
       <div className="flex items-center text-custombase text-lightgray mt-2">

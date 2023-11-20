@@ -1,25 +1,25 @@
 'use client';
 
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
-import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
-import useCountries from "@/app/hooks/useCountries";
-import React, { useCallback, useMemo } from "react";
-import { format } from "date-fns";
-import Image from "next/image";
-import HeartButton from "../HeartButton";
+import { SafeListing, SafeReservation, SafeUser } from '@/app/types';
+import useCountries from '@/app/hooks/useCountries';
+import React, { useCallback, useMemo } from 'react';
+import { format } from 'date-fns';
+import Image from 'next/image';
+import HeartButton from '../HeartButton';
 import { IoLocationOutline } from 'react-icons/io5';
-import Button from "../Button";
-import { categories } from "../navbar/Categories";
+import Button from '../Button';
+import { categories } from '../navbar/Categories';
 
 interface ListingCardProps {
-    data: SafeListing;
-    reservation?: SafeReservation;
-    onAction?: (id: string) => void;
-    disabled?: boolean;
-    actionLabel?: string;
-    actionId?: string;
-    currentUser?: SafeUser | null;
+  data: SafeListing;
+  reservation?: SafeReservation;
+  onAction?: (id: string) => void;
+  disabled?: boolean;
+  actionLabel?: string;
+  actionId?: string;
+  currentUser?: SafeUser | null;
 }
 
 const ListingCard = ({
@@ -86,7 +86,7 @@ const ListingCard = ({
         h-full
         "
         style={{
-          height: '500px',
+          height: '600px',
         }}>
         <div
           className="
@@ -112,11 +112,11 @@ const ListingCard = ({
                 'linear-gradient(180deg, #FFFFFF 58.85%, rgba(255, 255, 255, 0.00) 100%)',
             }}
             className="absolute bottom-2 left-0 right-0 mx-2  rounded-tr-3xl rounded-bl-3xl p-3 bg-red-100">
-            <div className="font-poppins font-semibold text-lg mb-3">
+            <div className="leading-none font-rajdhani font-bold text-twentyfour mb-3 sm:text-twentyfour md:text-twentyfour lg:text-thirtytwo">
               {data.title}
             </div>
 
-            <div className="font-rajhadi flex flex-row gap-1 font-light text-neutral-800 mb-3">
+            <div className=" flex flex-row gap-1 font-light text-gray mb-3 text-twenty sm:text-twenty md:text-twenty lg:text-twenty xl:text-twentyeight leading-none">
               <IoLocationOutline /> {location?.region}, {location?.label}
             </div>
 

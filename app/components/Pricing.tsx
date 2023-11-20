@@ -19,8 +19,8 @@ const Pricing = ({ data }: PricingProps) => {
   };
 
   return (
-    <div>
-      <div className="flex text-2xl text-lightgray gap-2 font-bold">
+    <>
+      <div className="flex text-twentyfour text-lightgray gap-2 font-poppins font-semibold">
         Pricing
         <FaCreditCard size={28} />
       </div>
@@ -39,7 +39,7 @@ const Pricing = ({ data }: PricingProps) => {
           </span>
         </span>
       </div>
-    </div>
+    </>
   );
 };
 
