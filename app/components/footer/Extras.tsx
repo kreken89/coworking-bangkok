@@ -2,19 +2,19 @@ import React from 'react';
 const Extras = () => {
   return (
     <div className="mb-4 md:mb-0 ">
-      <h3 className="font-semibold text-thirtytwo">EXTRAS</h3>
-      <p className="text-gray-300 mt-2 text-twentyfour">
+      <h3 className="font-bold text-twentyfour sm:text-thirtytwo font-rajdhani">EXTRAS</h3>
+      <p className="mt-2 text-twenty sm:text-twentyfour font-poppins">
         Free cancellation
         <br />
         Flexible bookings
       </p>
-      <div className=" text-gray-300 mt-8 flex flex-col">
+      <div className="mt-8 flex flex-col text-twentyfour">
         <div>
-          <h3 className="text-thirtytwo font-semibold">CONTACT</h3>
+          <h3 className="text-twentyfour sm:text-thirtytwo font-bold font-rajdhani">CONTACT</h3>
           <a
             href="mailto:coworkingbangkok@gmail.com"
-            className="hover:text-yellow text-twentyfour">
-            coworkingbangkok@gmail.com
+            className="hover:text-yellow text-twentyfour font-poppins">
+            cwbangkok@gmail.com
           </a>
         </div>
       </div>

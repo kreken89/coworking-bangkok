@@ -4,14 +4,14 @@ import { IoChatbubbleEllipsesSharp } from 'react-icons/io5';
 
 const Ratings = () => {
   return (
-    <div>
-      <div className="flex text-2xl text-lightgray gap-2 font-bold mt-4">
-        Review
+    <div className="font-poppins">
+      <div className="flex text-twentyfour text-lightgray gap-2 font-bold mt-4">
+        Reviews
         <IoChatbubbleEllipsesSharp size={28} />
       </div>
       <div className="flex flex-col text-lightgray gap-4 mt-4 mb-4">
         <span>⭐️⭐️⭐️⭐️⭐️</span>
-        <p>
+        <p className="italic font-light">
           Central Bangkok coworking space: Vibrant atmosphere, modern amenities,
           prime location. Excellent facilities for productivity, collaborative
           environment. Convenient for networking, surrounded by cafes and
@@ -21,7 +21,7 @@ const Ratings = () => {
       </div>
       <div className="flex flex-col text-lightgray gap-4 mt-4 mb-4">
         <span>⭐️⭐️⭐️⭐️⭐️</span>
-        <p>
+        <p className="italic font-light">
           A sleek coworking oasis in the city center. Stylish design, high-speed
           internet, and diverse workspaces. Friendly community, perfect for
           freelancers and startups. Central location with easy access to public

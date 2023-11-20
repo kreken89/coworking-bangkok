@@ -35,7 +35,6 @@ const ListingClient = ({
   reservations = [],
   locationValue,
 }: ListingClientProps) => {
-
   const { getByValue } = useCountries();
   const { isOpen, onOpen } = useCheckoutModal();
   const coordinates = getByValue(locationValue)?.latlng;
@@ -48,10 +47,8 @@ const ListingClient = ({
     return categories.filter((item) => listing.category.includes(item.label));
   }, [listing.category]);
 
-  
   return (
     <Container>
-      {/* Left Side */}
       <div className="max-w-screen-4XL mx-auto">
         <div className="flex flex-col gap-12">
           <ListingHead
@@ -65,17 +62,21 @@ const ListingClient = ({
             className="
             grid
             grid-cols-1
-            md:grid-cols-7
+            md:grid-cols-12
             md:gap-10
-          ">
-            <div className="md:col-span-4">
-              <ListingInfo
-                title={listing.title}
-                user={listing.user}
-                categories={categoriesForListing}
-                description={listing.description}
-                locationValue={listing.locationValue}
-              />
+            ">
+            {/* Left Side */}
+            <div className="md:col-span-8">
+              <div className="col-span-4 flex flex-col gap-2">
+                <ListingInfo
+                  title={listing.title}
+                  user={listing.user}
+                  categories={categoriesForListing}
+                  description={listing.description}
+                  locationValue={listing.locationValue}
+                />
+              </div>
+
               <div className="md:order-first order-last md:col-span-4 mt-20">
                 <Map center={coordinates} />
               </div>
@@ -84,14 +85,11 @@ const ListingClient = ({
               className="
               mb-10
               md:order-last
-              md:col-span-3
+              md:col-span-4
               ">
-                
               {/* Right side */}
               <div className=" md:col-span-3">
-                <Pricing 
-                  data={listing}
-                />
+                <Pricing data={listing} />
                 <Button label="Book now!" onClick={onOpen} />
                 {isOpen && (
                   <CheckoutModal listing={listing} currentUser={currentUser} />

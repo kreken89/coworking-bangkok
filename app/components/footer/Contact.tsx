@@ -4,7 +4,7 @@ import React from 'react'
 
 const Contact = () => {
   return (
-    <div className=" text-gray-300 mt-8 flex flex-col text-thirtytwo">
+    <div className="mt-8 flex flex-col text-thirtytwo">
         <div>
           <h3>CONTACT</h3>
           <a

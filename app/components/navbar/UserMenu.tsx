@@ -153,7 +153,6 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
             rounded-xl
             shadow-md
             w-48
-            
             bg-white
             overflow-hidden
             right-0

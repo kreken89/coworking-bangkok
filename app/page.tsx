@@ -49,7 +49,7 @@ const Home = async ({ searchParams}: HomeProps) => {
       <CoffeeBanner />
 
       <Container>
-        <div className="py-6 md:pb-4 ">
+        <div className="pt-8  ">
           <ArraySlicer
             listings={listings.slice(6, 9)}
             currentUser={currentUser}
@@ -57,7 +57,7 @@ const Home = async ({ searchParams}: HomeProps) => {
         </div>
       </Container>
       <Container>
-        <div className="py-6 md:pb-4">
+        <div className="pt-8 ">
           <ArraySlicer
             listings={listings.slice(9, 12)}
             currentUser={currentUser}
