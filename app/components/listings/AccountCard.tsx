@@ -93,7 +93,7 @@ const AccountCard = ({
   return (
     <div
       onClick={() => router.push(`/listings/${data.id}`)}
-      className="flex bg-white sm:p-6 md:p-6 lg:p-6 mobile:p-2 rounded-lg custom-shadow cursor-pointer transition-shadow">
+      className="flex bg-white sm:p-6 md:p-6 lg:p-6 mxs:p-2 rounded-lg custom-shadow cursor-pointer transition-shadow">
       <div
         className="
           aspect-square
@@ -121,7 +121,7 @@ const AccountCard = ({
       {/* Right column wth info */}
       <div className="flex flex-col justify-between flex-grow">
         <div className="flex flex-row justify-between">
-          <h2 className="text-mobile sm:text-twenty md:text-thirtysix lg:text-fortyeight leading-none font-bold mb-2">
+          <h2 className="sm:text-twenty md:text-thirtysix lg:text-fortyeight leading-none font-bold mb-2">
             {data.title}
           </h2>
           <div className="flex items-center space-x-2 mb-20"></div>
@@ -141,7 +141,7 @@ const AccountCard = ({
           </p>
         </div>
 
-        <div className="flex justify-between items-center lg:text-twentyfour md:text-twenty mobile:text-custom-small ">
+        <div className="flex justify-between items-center lg:text-twentyfour md:text-twenty mxs:text-custom-small ">
           <p className="text-black-500 font-bold mb-2">{reservationDate}</p>
           <span className="text-black-500 font-bold">{price} THB</span>
         </div>

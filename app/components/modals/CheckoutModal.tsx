@@ -134,7 +134,7 @@ const CheckoutModal = ({ listing, currentUser }: CheckoutModalProps) => {
           {/* Left side */}
           <div className="md:w-1/2 flex justify-between flex-col order-last md:order-first">
             <div>
-              <div className="mxs:text-thirtysix mobile:text-fortyeight lg:text-fortyeight flex justify-center font-bold leading-none">
+              <div className="text-thirtysix md:text-fortyeight lg:text-fortyeight flex justify-center font-bold leading-none">
                 <h1 className="text-darkgray mb-10">Choose dates</h1>
               </div>
               <ListingReservation
@@ -149,7 +149,7 @@ const CheckoutModal = ({ listing, currentUser }: CheckoutModalProps) => {
             </div>
 
             <div>
-              <div className=" text-darkgray mxs:text-twenty mobile:text-twentyfour font-bold flex justify-center gap-2 mt-8">
+              <div className=" text-darkgray text-twentyfour lg:text-thirtysix font-bold flex items-center justify-center gap-2 mt-8">
                 <p>Choose Payment Method</p>
                 <AiFillCreditCard size={30} />
               </div>
@@ -199,7 +199,6 @@ const CheckoutModal = ({ listing, currentUser }: CheckoutModalProps) => {
           <div className="w-full md:w-1/2 flex flex-col px-4 order-first md:order-last">
             <div>
               <ListingHead
-                
                 imageSrc={[listing.imageSrc[0]]}
                 locationValue={listing.locationValue}
                 id={listing.id}
@@ -207,7 +206,7 @@ const CheckoutModal = ({ listing, currentUser }: CheckoutModalProps) => {
               />
             </div>
 
-            <div className='flex flex-col justify-between'>
+            <div className="flex flex-col justify-between">
               <ListingInfo
                 title={listing.title}
                 user={listing.user}
@@ -215,7 +214,7 @@ const CheckoutModal = ({ listing, currentUser }: CheckoutModalProps) => {
                 locationValue={listing.locationValue}
               />
 
-              <div className="order-first sm:order-last md:order-last">
+              <div className="order-first mxs:order-last xs:order-last sm:order-last md:order-last">
                 <ReservationButton
                   totalPrice={totalPrice}
                   disabled={!selectedPaymentMethod || isLoading}

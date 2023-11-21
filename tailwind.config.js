@@ -44,10 +44,8 @@ module.exports = {
       'instagram-gradient': 'linear-gradient(45deg, rgba(229,64,109,1) 0%, rgba(252,175,69,1) 100%)',
     },
       screens: {
-        'mxs': '190px', 
-        'mobile': '390px',
-        'xs': '480px', 
-        
+        'xs': {'min' : '480px', 'max' : '639px'},
+        'mxs': {'min' : '200px', 'max' : '479px'},
       },
       width: {
         '1/2': '50%',

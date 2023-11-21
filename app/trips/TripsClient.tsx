@@ -48,7 +48,7 @@ const TripsClient = ({ reservations, currentUser }: TripsClientProps) => {
       </div>
 
       <div className="bg-darkgray">
-        <div className="ml-5 text-white p-2 mb-5 font-bold text-mobile-twentyfour lg:text-thirtysix">
+        <div className="ml-5 text-white p-2 mb-5 font-bold md:text-twentyfour lg:text-thirtysix">
           Bookings
         </div>
       </div>
@@ -59,7 +59,7 @@ const TripsClient = ({ reservations, currentUser }: TripsClientProps) => {
             data={reservation.listing}
             key={reservation.id}
             reservation={reservation}
-            onAction={() => onCancel(reservation.id)} 
+            onAction={() => onCancel(reservation.id)}
           />
         ))}
       </div>
