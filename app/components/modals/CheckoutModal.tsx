@@ -46,9 +46,7 @@ const CheckoutModal = ({ listing, currentUser }: CheckoutModalProps) => {
   const [totalPrice, setTotalPrice] = useState(100); // Example base price
   const [disabledDates, setDisabledDates] = useState([]); // You would get this from props or context
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
-    string | null
-  >(null);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState< string | null >(null);
 
   const onCreateReservation = useCallback(() => {
     if (!currentUser) {
@@ -101,6 +99,8 @@ const CheckoutModal = ({ listing, currentUser }: CheckoutModalProps) => {
       if (dayCount && listing.price) {
         discountedPrice = dayCount * listing.price;
         discountedPrice = discountedPrice * ((100 - discountPercentage) / 100);
+
+        discountedPrice = Math.ceil(discountedPrice);
       }
 
       setTotalPrice(discountedPrice);

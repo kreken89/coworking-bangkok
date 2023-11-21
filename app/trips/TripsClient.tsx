@@ -19,23 +19,25 @@ interface TripsClientProps {
 
 const TripsClient = ({ reservations, currentUser }: TripsClientProps) => {
     const router = useRouter();
-    const [deletingId, setDeletingId] = useState('')
-
-    const onCancel = useCallback(( id: string) => {
+    const [deletingId, setDeletingId] = useState('');
+    const onCancel = useCallback(
+      (id: string) => {
         setDeletingId(id);
-
-        axios.delete(`/api/reservations/${id}`)
-        .then(() => {
+        axios
+          .delete(`/api/reservations/${id}`)
+          .then(() => {
             toast.success('Reservation cancelled');
             router.refresh();
-        })
-        .catch((error) => {
-            toast.error(error?.response?.data?.error)
-        })
-        .finally(() => {
+          })
+          .catch((error) => {
+            toast.error(error?.response?.data?.error);
+          })
+          .finally(() => {
             setDeletingId('');
-        })
-    }, [router]);
+          });
+      },
+      [router]
+    );
 
   return (
     <Container>
@@ -57,6 +59,7 @@ const TripsClient = ({ reservations, currentUser }: TripsClientProps) => {
             data={reservation.listing}
             key={reservation.id}
             reservation={reservation}
+            onAction={() => onCancel(reservation.id)} 
           />
         ))}
       </div>

@@ -11,6 +11,7 @@ import HeartButton from '../HeartButton';
 import Button from '../Button';
 import Heading from '../Heading';
 import { BsFillPencilFill } from 'react-icons/bs';
+import { IoTrashBinOutline } from 'react-icons/io5';
 
 interface AccountCardProps {
   data: SafeListing;
@@ -36,7 +37,7 @@ const AccountCard = ({
 
   const location = getByValue(data.locationValue);
 
-  const handleCancel = useCallback(
+  const handleEdit = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
 
@@ -44,10 +45,23 @@ const AccountCard = ({
         return;
       }
 
-      onAction?.(actionId);
+      router.push(`/listings/${data.id}/edit`);
     },
-    [onAction, actionId, disabled]
+    [router, data.id, disabled]
   );
+
+  // const handleCancel = useCallback(
+  //   (e: React.MouseEvent<HTMLButtonElement>) => {
+  //     e.stopPropagation();
+
+  //     if (disabled) {
+  //       return;
+  //     }
+
+  //     onAction?.(actionId);
+  //   },
+  //   [onAction, actionId, disabled]
+  // );
 
   const price = useMemo(() => {
     if (reservation) {
@@ -68,6 +82,14 @@ const AccountCard = ({
     return `${format(start, 'MMM d')} - ${format(end, 'MMM d')}`;
   }, [reservation]);
 
+  const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+
+    const idToDelete = reservation ? reservation.id : data.id;
+
+    onAction?.(idToDelete);
+  };
+
   return (
     <div
       onClick={() => router.push(`/listings/${data.id}`)}
@@ -82,7 +104,6 @@ const AccountCard = ({
           w-1/5
           mr-4
         ">
-
         <Image
           fill
           alt="Listing"
@@ -98,22 +119,28 @@ const AccountCard = ({
       </div>
 
       {/* Right column wth info */}
-      <div className="flex flex-col justify-between flex-grow ">
-        <div>
-          <div className="flex flex-row justify-between">
-            <h2 className="text-mobile sm:text-twenty md:text-thirtysix lg:text-fiftysix  font-bold text-gray-800 mb-2 ">
-              {data.title}
-            </h2>
-            <div className="flex items-center space-x-2 text-gray-600 mb-20 ">
-              <BsFillPencilFill className="w-4 h-4 sm:w-8 sm:h-8" />
-            </div>
-            {/* Add more icons or actions here as needed */}
-          </div>
-          <hr />
-          <p className="text-gray-600 mb-2 max-w-md hidden sm:block lg:text-twentyfour md:text-twenty">
+      <div className="flex flex-col justify-between flex-grow">
+        <div className="flex flex-row justify-between">
+          <h2 className="text-mobile sm:text-twenty md:text-thirtysix lg:text-fortyeight leading-none font-bold mb-2">
+            {data.title}
+          </h2>
+          <div className="flex items-center space-x-2 mb-20"></div>
+
+          <button className="cursor-pointer" onClick={handleEdit}>
+            <BsFillPencilFill className="w-5 h-5 sm:w-8 sm:h-8 hover:text-greenBtn" />
+          </button>
+
+          <button className="cursor-pointer" onClick={handleDelete}>
+            <IoTrashBinOutline className="w-5 h-5 sm:w-8 sm:h-8 hover:text-red" />
+          </button>
+        </div>
+
+        <div style={{ maxHeight: '150px', overflow: 'auto' }}>
+          <p className="mb-2 max-w-md hidden md:block md:text-twenty lg:text-twentyfour ">
             {data.description}
           </p>
         </div>
+
         <div className="flex justify-between items-center lg:text-twentyfour md:text-twenty mobile:text-custom-small ">
           <p className="text-black-500 font-bold mb-2">{reservationDate}</p>
           <span className="text-black-500 font-bold">{price} THB</span>
