@@ -1,30 +1,69 @@
 'use client';
 
-import useCountries from "@/app/hooks/useCountries";
-import { SafeUser } from "@/app/types";
-import Heading from "../Heading";
-import Image from "next/image";
-import HeartButton from "../HeartButton";
-
-
+import useCountries from '@/app/hooks/useCountries';
+import { SafeUser } from '@/app/types';
+import Heading from '../Heading';
+import Image from 'next/image';
+import HeartButton from '../HeartButton';
+import { useState } from 'react';
 
 interface ListingHeadProps {
-    title?: string;
-    locationValue: string;
-    imageSrc: string[];
-    id: string;
-    currentUser?: SafeUser | null;
+  title?: string;
+  locationValue: string;
+  imageSrc: string[];
+  id: string;
+  currentUser?: SafeUser | null;
 }
 
-const ListingHead = ({ title, locationValue, imageSrc, id, currentUser  }: ListingHeadProps) => {
+const ListingHead = ({
+  title,
+  locationValue,
+  imageSrc,
+  id,
+  currentUser,
+}: ListingHeadProps) => {
+  const { getByValue } = useCountries();
 
-    const { getByValue } = useCountries();
+  const location = getByValue(locationValue);
 
-    const location = getByValue(locationValue);
-    
+  const [mainImage, setMainImage] = useState(imageSrc[0]);
+  const handleImageClick = (image: string) => setMainImage(image);
+
   return (
     <>
-      <div className="w-full flex flex-col md:flex-row justify-center gap-x-1 overflow-hidden rounded-bl-3xl rounded-tr-3xl custom-listing-border-radius">
+      <div className="w-full flex flex-col md:flex-row justify-center gap-1 overflow-hidden rounded-bl-3xl rounded-tr-3xl custom-listing-border-radius">
+        {/* Main image */}
+        <div className="w-full md:w-2/3 h-[30vh] overflow-hidden relative">
+          <Image
+            alt="Property Image"
+            src={mainImage}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+
+        {/* Secondary images */}
+        <div className="w-full md:w-1/2 grid gap-1 grid-cols-1 md:grid-cols-2 sm:grid-cols-4">
+          {imageSrc.map(
+            (image, index) =>
+              image !== mainImage && (
+                <div
+                  key={index}
+                  className="relative cursor-pointer"
+                  onClick={() => handleImageClick(image)}>
+                  <Image
+                    alt={`Image ${index}`}
+                    src={image}
+                    layout="fill"
+                    objectFit="cover"
+                    className="w-full h-[10vh] md:h-[15vh] sm:h-[20vh]"
+                  />
+                </div>
+              )
+          )}
+        </div>
+      </div>
+      {/* <div className="w-full flex flex-col md:flex-row justify-center gap-x-1 overflow-hidden rounded-bl-3xl rounded-tr-3xl custom-listing-border-radius">
         <div className=" w-full h-[30vh] md:h-[30.4vh] overflow-hidden relative">
           <div className="flex">
             <Image
@@ -33,9 +72,9 @@ const ListingHead = ({ title, locationValue, imageSrc, id, currentUser  }: Listi
               layout="fill"
               objectFit="cover"
             />
-            {/* <div className="absolute top-5 right-5">
+            <div className="absolute top-5 right-5">
                   <HeartButton listingId={id} currentUser={currentUser} />
-                </div> */}
+                </div>
           </div>
         </div>
 
@@ -69,10 +108,9 @@ const ListingHead = ({ title, locationValue, imageSrc, id, currentUser  }: Listi
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
-}
+};
 
-export default ListingHead
-
+export default ListingHead;

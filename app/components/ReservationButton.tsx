@@ -36,6 +36,7 @@ const ReservationButton = ({ totalPrice, disabled, onSubmit }: ReservationButton
         py-2
         font-semibold
         text-lg
+        font-poppins
       ">
         <div>Total</div>
         <div>{totalPrice} THB</div>
