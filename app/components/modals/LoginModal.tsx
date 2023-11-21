@@ -15,6 +15,8 @@ import { toast } from 'react-hot-toast';
 import Button from '../Button';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { useRouter } from 'next/navigation';
+import { FaRegEyeSlash } from 'react-icons/fa';
+import { IoEye } from 'react-icons/io5';
 
 const LoginModal = () => {
     const router = useRouter();
@@ -23,6 +25,11 @@ const LoginModal = () => {
     const loginModal = useLoginModal();
 
     const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleTogglePassword = () => {
+      setShowPassword(!showPassword);
+    };
 
     const {
         register,
@@ -66,7 +73,11 @@ const LoginModal = () => {
 
     const bodyContent = (
       <div className="flex flex-col gap-4">
-        <Heading title="Welcome back" subtitle="Login to your account!" center />
+        <Heading
+          title="Welcome back"
+          subtitle="Login to your account!"
+          center
+        />
         <Input
           id="email"
           label="Email"
@@ -75,15 +86,42 @@ const LoginModal = () => {
           errors={errors}
           required
         />
-        <Input
+        <div className="relative">
+          <Input
+            id="password"
+            type={showPassword ? 'text' : 'password'}
+            label="Password"
+            disabled={isLoading}
+            register={register}
+            errors={errors}
+            required
+          />
+          <button
+            type="button"
+            onClick={handleTogglePassword}
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer">
+            {showPassword ? <FaRegEyeSlash size={24} /> : <IoEye size={24} />}
+          </button>
+        </div>
+        {/* <Input
           id="password"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           label="Password"
           disabled={isLoading}
           register={register}
           errors={errors}
           required
         />
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            id="showPassword"
+            onChange={handleTogglePassword}
+            checked={showPassword}
+            className="mr-2 cursor-pointer"
+          />
+          <label htmlFor="showPassword">Show Password</label>
+        </div> */}
       </div>
     );
     
@@ -117,7 +155,7 @@ const LoginModal = () => {
           items-center 
           gap-2
           ">
-            <div>Dont have an account yet?</div>
+            <div>No account yet?</div>
             <div
               onClick={toggle}
               className="
