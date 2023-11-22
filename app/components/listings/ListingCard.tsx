@@ -112,11 +112,11 @@ const ListingCard = ({
                 'linear-gradient(180deg, #FFFFFF 58.85%, rgba(255, 255, 255, 0.00) 100%)',
             }}
             className="absolute bottom-2 left-0 right-0 mx-2  rounded-tr-3xl rounded-bl-3xl p-3 bg-red-100">
-            <div className="leading-none font-rajdhani font-bold text-twentyfour mb-3 sm:text-twentyfour md:text-twentyfour lg:text-thirtytwo">
+            <div className="leading-none font-rajdhani font-bold text-twenty mb-3 sm:text-twenty md:text-twenty lg:text-twentyfour">
               {data.title}
             </div>
 
-            <div className=" flex flex-row gap-1 font-light text-gray mb-3 text-twenty sm:text-twenty md:text-twenty lg:text-twenty xl:text-twentyeight leading-none">
+            <div className=" flex flex-row gap-1 font-light text-gray mb-3 text-twenty sm:text-twenty md:text-twenty lg:text-twenty xl:text-twenty leading-none">
               <IoLocationOutline /> {location?.region}, {location?.label}
             </div>
 
