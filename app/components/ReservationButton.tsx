@@ -1,20 +1,33 @@
 'use client';
 
+import { useRouter } from "next/navigation";
 import useConfirmationModal from "../hooks/useConfirmationModal";
 import Button from "./Button";
+import useLoginModal from "../hooks/useLoginModal";
+import useCheckoutModal from "../hooks/useCheckoutModal";
 
 interface ReservationButtonProps {
   totalPrice: number;
   disabled: boolean;
   onSubmit: () => void;
+  currentUser: any;
 }
 
 
-const ReservationButton = ({ totalPrice, disabled, onSubmit }: ReservationButtonProps) => {
+const ReservationButton = ({
+  totalPrice,
+  disabled,
+  onSubmit,
+  currentUser,
+}: ReservationButtonProps) => {
+  const { isOpen, onOpen, onClose } = useConfirmationModal();
+  const loginModal = useLoginModal();
+  const checkoutModal = useCheckoutModal();
 
-    const { isOpen, onOpen, onClose } = useConfirmationModal();
-
-    const handleButtonClick = () => {
+  const handleButtonClick = () => {
+    // Check if the user is logged in
+    if (currentUser) {
+      
       // Open the confirmation modal
       onOpen();
 
@@ -22,9 +35,17 @@ const ReservationButton = ({ totalPrice, disabled, onSubmit }: ReservationButton
       setTimeout(() => {
         onSubmit();
         onClose();
-      }, 3000); // Example delay of 500 milliseconds
-    };
+      }, 3000);
+    } else {
+      checkoutModal.onClose();
+      
+      setTimeout(() => {
+        loginModal.onOpen();
+      }, 300);
+    }
+  };
 
+  
   return (
     <>
       <div
@@ -50,6 +71,6 @@ const ReservationButton = ({ totalPrice, disabled, onSubmit }: ReservationButton
       </div>
     </>
   );
-}
+};
 
-export default ReservationButton
+export default ReservationButton;

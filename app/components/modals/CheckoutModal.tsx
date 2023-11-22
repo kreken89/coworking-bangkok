@@ -219,6 +219,7 @@ const CheckoutModal = ({ listing, currentUser }: CheckoutModalProps) => {
                   totalPrice={totalPrice}
                   disabled={!selectedPaymentMethod || isLoading}
                   onSubmit={onCreateReservation}
+                  currentUser={currentUser}
                 />
               </div>
             </div>
