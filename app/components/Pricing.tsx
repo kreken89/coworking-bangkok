@@ -20,7 +20,7 @@ const Pricing = ({ data }: PricingProps) => {
 
   return (
     <div className="font-poppins">
-      <div className="flex text-twentyfour text-lightgray gap-2 font-bold">
+      <div className="flex items-center text-twentyfour text-lightgray gap-2 font-bold">
         Pricing <FaCreditCard size={28} />
       </div>
       <div className="flex flex-col text-lightgray gap-4 mt-4 mb-4">

@@ -112,7 +112,7 @@ const ListingCard = ({
                 'linear-gradient(180deg, #FFFFFF 58.85%, rgba(255, 255, 255, 0.00) 100%)',
             }}
             className="absolute bottom-2 left-0 right-0 mx-2  rounded-tr-3xl rounded-bl-3xl p-3 bg-red-100">
-            <div className="leading-none font-rajdhani font-bold text-twenty mb-3 sm:text-twenty md:text-twenty lg:text-twentyfour">
+            <div className="leading-none text-listingcardtitle font-rajdhani font-bold text-twenty mb-3 sm:text-twenty md:text-twenty lg:text-twentyfour">
               {data.title}
             </div>
 
@@ -143,8 +143,8 @@ const ListingCard = ({
               })}
             </div>
 
-            <div className="flex flex-row items-center gap-1 bg-white p-1 rounded-tr-2xl rounded-bl-2xl w-1/2 justify-center ml-auto">
-              <div className="font-poppins font-bold">{price} THB</div>
+            <div className="flex flex-row items-center gap-1 bg-white p-1 rounded-tr-2xl rounded-bl-2xl w-3/5 justify-center ml-auto text-darkgray">
+              <div className="font-poppins font-bold ">{price} THB</div>
               {!reservation && (
                 <div className="font-poppins font-bold">/Week</div>
               )}

@@ -19,7 +19,7 @@ const Button = ({ label, onClick, disabled, outline, small, icon: Icon }: Button
       className={`
       font-poppins
       relative
-      disabled:opacity-70
+      disabled:opacity-50
       disabled:cursor-not-allowed
       rounded-tr-2xl
       rounded-bl-2xl

@@ -190,6 +190,9 @@ const RegisterModal = () => {
             text-neutral-800 
             cursor-pointer 
             hover:underline
+            font-bold
+            font-poppins
+            
             ">
           Log in
         </div>

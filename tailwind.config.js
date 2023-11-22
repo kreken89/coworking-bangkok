@@ -33,6 +33,7 @@ module.exports = {
         'greenBtn': '#28A745',
         'red': '#A72828',
         'coffeecircle': '#F5EEE8',
+        'listingcardtitle': '#383737',
         // You can add more custom colors here if needed
       },
       instagram: {

@@ -126,9 +126,9 @@ const AccountCard = ({
           </h2>
           <div className="flex items-center space-x-2 mb-20"></div>
 
-          <button className="cursor-pointer" onClick={handleEdit}>
+          {/* <button className="cursor-pointer" onClick={handleEdit}>
             <BsFillPencilFill className="w-5 h-5 sm:w-8 sm:h-8 hover:text-greenBtn" />
-          </button>
+          </button> */}
 
           <button className="cursor-pointer" onClick={handleDelete}>
             <IoTrashBinOutline className="w-5 h-5 sm:w-8 sm:h-8 hover:text-red" />
