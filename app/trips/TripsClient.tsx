@@ -41,10 +41,23 @@ const TripsClient = ({ reservations, currentUser }: TripsClientProps) => {
 
   return (
     <Container>
-      <div className="flex mb-10 gap-2 text-darkgray xs:text-thirtysix sm:text-fiftysix md:text-sixty lg:text-seventyeight">
-        <BiSolidUser className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-11 lg:h-11" />
-
-        <Heading title="Account" />
+      <div className="flex xs:flex-col mxs:flex-col mb-10 gap-2 text-darkgray xs:text-thirtysix sm:text-fiftysix md:text-sixty lg:text-seventyeight justify-between ">
+        <div className="flex">
+          <BiSolidUser className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-11 lg:h-11" />
+          <Heading title="Account" />
+        </div>
+        {currentUser && (
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
+            <div>
+              {/* Display information about the current user */}
+              <p className="font-poppins font-semibold text-custom-base lg:text-twenty">
+                {currentUser.email}
+              </p>
+              {/* Add other user information as needed */}
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="bg-darkgray">

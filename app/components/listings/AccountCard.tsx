@@ -12,6 +12,7 @@ import Button from '../Button';
 import Heading from '../Heading';
 import { BsFillPencilFill } from 'react-icons/bs';
 import { IoTrashBinOutline } from 'react-icons/io5';
+import { FaRegTrashAlt } from 'react-icons/fa';
 
 interface AccountCardProps {
   data: SafeListing;
@@ -121,17 +122,17 @@ const AccountCard = ({
       {/* Right column wth info */}
       <div className="flex flex-col justify-between flex-grow">
         <div className="flex flex-row justify-between">
-          <h2 className="sm:text-twenty md:text-thirtysix lg:text-fortyeight leading-none font-bold mb-2">
+          <h2 className="sm:text-twenty md:text-thirtysix lg:text-fortyeight leading-none font-bold font-poppins text-darkgray mb-2">
             {data.title}
           </h2>
           <div className="flex items-center space-x-2 mb-20"></div>
 
-          <button className="cursor-pointer" onClick={handleEdit}>
+          {/* <button className="cursor-pointer" onClick={handleEdit}>
             <BsFillPencilFill className="w-5 h-5 sm:w-8 sm:h-8 hover:text-greenBtn" />
-          </button>
+          </button> */}
 
           <button className="cursor-pointer" onClick={handleDelete}>
-            <IoTrashBinOutline className="w-5 h-5 sm:w-8 sm:h-8 hover:text-red" />
+            <FaRegTrashAlt className="w-5 h-5 sm:w-8 sm:h-8 hover:text-red" />
           </button>
         </div>
 
