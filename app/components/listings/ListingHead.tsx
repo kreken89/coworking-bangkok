@@ -32,7 +32,7 @@ const ListingHead = ({
 
   return (
     <>
-      <div className="w-full flex flex-col md:flex-row justify-center gap-x-1 overflow-hidden rounded-bl-3xl rounded-tr-3xl custom-listing-border-radius">
+      <div className="w-full flex flex-col md:flex-row justify-center gap-x-1 overflow-hidden rounded-bl-5xl rounded-tr-5xl custom-listing-border-radius">
         <div className=" w-full h-[30vh] md:h-[30.4vh] overflow-hidden relative mb-1 mxs:h-[20vh]">
           
             <Image
