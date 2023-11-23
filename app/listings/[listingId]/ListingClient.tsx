@@ -39,10 +39,6 @@ const ListingClient = ({
   const { isOpen, onOpen } = useCheckoutModal();
   const coordinates = getByValue(locationValue)?.latlng;
 
-  // const category = useMemo(() => {
-  //   return categories.find((item) => item.label === listing.category);
-  // }, [listing.category]);
-
   const categoriesForListing = useMemo(() => {
     return categories.filter((item) => listing.category.includes(item.label));
   }, [listing.category]);

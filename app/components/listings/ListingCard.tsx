@@ -99,6 +99,7 @@ const ListingCard = ({
               fill
               src={imageUrl}
               alt={`Listing Image ${index + 1}`}
+              sizes="(max-width: 640px) 100vw, 640px"
               className="object-cover transition group-hover:scale-110"
             />
           ))}

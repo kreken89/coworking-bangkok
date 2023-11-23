@@ -108,6 +108,7 @@ const AccountCard = ({
         <Image
           fill
           alt="Listing"
+          sizes="(max-width: 640px) 100vw, 640px"
           src={data.imageSrc[0]}
           className="
           object-cover
