@@ -33,7 +33,7 @@ interface CheckoutModalProps {
 const CheckoutModal = ({ listing, currentUser }: CheckoutModalProps) => {
   const { isOpen, onClose } = useCheckoutModal();
 
-  // const modalRef = useRef(null);
+ 
   const router = useRouter();
   const loginModal = useLoginModal();
 
@@ -43,8 +43,8 @@ const CheckoutModal = ({ listing, currentUser }: CheckoutModalProps) => {
     key: 'selection',
   });
 
-  const [totalPrice, setTotalPrice] = useState(100); // Example base price
-  const [disabledDates, setDisabledDates] = useState([]); // You would get this from props or context
+  const [totalPrice, setTotalPrice] = useState(100); 
+  const [disabledDates, setDisabledDates] = useState([]); 
   const [isLoading, setIsLoading] = useState(false);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState< string | null >(null);
 

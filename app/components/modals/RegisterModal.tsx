@@ -160,16 +160,6 @@ const RegisterModal = () => {
             <IoEye size={24} />
           )}
         </button>
-        {/* <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="showPassword"
-              onChange={handleTogglePassword}
-              checked={showPassword}
-              className="mr-2 cursor-pointer"
-            />
-            <label htmlFor="showPassword">Show Password</label>
-          </div> */}
       </div>
       <div className="text-red">{passwordError}</div>
       <div

@@ -58,7 +58,9 @@ const LoginModal = () => {
       }
 
       if (callback?.error) {
-        toast.error(callback.error);
+        if (callback.error !== 'Callback') {
+          toast.error(callback.error);
+        }
       }
     });
   };
@@ -96,27 +98,8 @@ const LoginModal = () => {
           {showPassword ? <FaRegEyeSlash size={24} /> : <IoEye size={24} />}
         </button>
       </div>
-      {/* <Input
-          id="password"
-          type={showPassword ? 'text' : 'password'}
-          label="Password"
-          disabled={isLoading}
-          register={register}
-          errors={errors}
-          required
-        />
-        <div className="flex items-center">
-          <input
-            type="checkbox"
-            id="showPassword"
-            onChange={handleTogglePassword}
-            checked={showPassword}
-            className="mr-2 cursor-pointer"
-          />
-          <label htmlFor="showPassword">Show Password</label>
-        </div> */}
-        <div
-          className="
+      <div
+        className="
           justify-center 
           flex 
           flex-col 
@@ -126,17 +109,17 @@ const LoginModal = () => {
           text-twenty
           font-poppins
           ">
-          <div>Dont have an account yet?</div>
-          <div
-            onClick={toggle}
-            className="
+        <div>Dont have an account yet?</div>
+        <div
+          onClick={toggle}
+          className="
             text-neutral-800 
             cursor-pointer 
             hover:underline
             ">
-            Register here
-          </div>
+          Register here
         </div>
+      </div>
     </div>
   );
 
@@ -161,8 +144,7 @@ const LoginModal = () => {
         text-center
         mt-4
         font-light
-        ">
-      </div>
+        "></div>
     </div>
   );
 

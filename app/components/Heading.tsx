@@ -1,7 +1,5 @@
 'use client';
 
-import { FaRegEnvelope } from 'react-icons/fa';
-
 interface HeadingProps {
   title: string;
   subtitle?: string;

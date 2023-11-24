@@ -10,7 +10,6 @@ const ConfirmationModal = () => {
   const router = useRouter();
 
   useEffect(() => {
-    // Automatically close the modal and redirect to the "trips" page after 3 seconds
     if (isOpen) {
       const timeoutId = setTimeout(() => {
         onClose(); // Close the modal
@@ -29,11 +28,11 @@ const ConfirmationModal = () => {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={onClose} // Assuming that this is the intended behavior
+      onSubmit={onClose} 
       actionLabel="Close"
       body={
         <div
-          // className="text-center text-seventyeight font-bold p-20 cursor-pointer"
+          
           className="text-center md:text-thirtysix lg:text-sixty text-fortyeight font-bold p-20 cursor-pointer"
           ref={modalRef}>
           <h1>

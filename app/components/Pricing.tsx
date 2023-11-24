@@ -13,7 +13,7 @@ const Pricing = ({ data }: PricingProps) => {
   const calculateWeeklyPrice = (price: number) => {
     return Math.floor(price * 7 * 0.9); // 10% discount
   };
-  // Function to calculate the discounted price for a month
+  // Function to calculate the discounted price for 28 days
   const calculateMonthlyPrice = (price: number) => {
     return Math.floor(price * 28 * 0.75); // 10% discount for a week + 10% discount for a month
   };
