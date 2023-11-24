@@ -86,7 +86,7 @@ const ListingCard = ({
         h-full
         "
         style={{
-          height: '500px',
+          height: '600px',
         }}>
         <div
           className="
